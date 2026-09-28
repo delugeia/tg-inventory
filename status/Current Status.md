@@ -6,7 +6,7 @@ Last updated: 2026-09-28 UTC (2026-09-27 local evening).
 
 Requirements planning. The authorized evening mockup pass is complete: four requested functionality drafts plus one useful additional event-reconciliation draft. **Next: user review of the mockups**, starting with whichever functionality they choose. No application implementation. All new specifications and mockups are Draft; confirmed individual requirements do not approve an assembled specification.
 
-[Current handoff](../handoff/2026-09-27-002618Z-handoff.md) · [Mockup index](../public/README.md) · [Style guide](../public/css/style-guide.html) · [Decisions](Decisions.md) through D-117 · [Open Questions](Open%20Questions.md) · [Future Ideas](Future%20Ideas.md).
+[Current handoff](../handoff/2026-09-27-002618Z-handoff.md) · [Mockup index](../public/README.md) · [Style guide](../public/css/style-guide.html) · [Decisions](Decisions.md) through D-118 · [Open Questions](Open%20Questions.md) · [Future Ideas](Future%20Ideas.md).
 
 ## Completed stages
 
@@ -122,7 +122,7 @@ Catalog verification: Chrome covered creation, Collection edit/inactive/archive/
 
 ## Public GitHub repository
 
-2026-09-28 UTC: Created the public [delugeia/tg-inventory](https://github.com/delugeia/tg-inventory) repository through the user's signed-in Chrome session. The user subsequently authorized publishing the current project and keeping it available on GitHub (D-118). The local project folder is the Git root, using `main` and the HTTPS `origin` remote. Publication setup is in progress.
+2026-09-28 UTC: Created the public [delugeia/tg-inventory](https://github.com/delugeia/tg-inventory) repository through the user's signed-in Chrome session. The user subsequently authorized publishing the current project and keeping it available on GitHub (D-118). The local project folder is the Git root, using `main` and the HTTPS `origin` remote. Initial publication completed in commit `65c0a14`; `main` tracks `origin/main`. Chrome verified the published file list and confirmed both `_private/` and `_private/shh.txt` return GitHub 404 responses. Local Git checks also confirm no files from `_private/` or `_secrets/` are tracked. [Browser verification](../work/github-setup/private-file-not-found.png).
 
 The root `.gitignore` excludes `_private/` (including the local `shh.txt` test), `_secrets/`, environment/credential files, dependencies, generated runtime/build output, and editor/OS files. All future secrets or PII must stay in `_secrets/` and must never be copied into tracked material. README and AGENTS.md record this ongoing rule. No application implementation is authorized.
 
