@@ -1,12 +1,12 @@
 # Current status
 
-Last updated: 2026-09-28 UTC (2026-09-27 local evening).
+Last updated: 2026-09-28 UTC — planning handoff prepared.
 
 ## Stage and next activity
 
-Requirements planning. The authorized evening mockup pass is complete: four requested functionality drafts plus one useful additional event-reconciliation draft. **Next: user review of the mockups**, starting with whichever functionality they choose. No application implementation. All new specifications and mockups are Draft; confirmed individual requirements do not approve an assembled specification.
+Requirements planning. All nine mockups and the subsequent refinements are complete as drafts, including Catalog. Public GitHub/Forge hosting and the walkthrough introduction are configured. **Next: user review of the mockups**, starting with whichever functionality they choose. No application implementation. All new specifications and mockups are Draft; confirmed individual requirements do not approve an assembled specification.
 
-[Current handoff](../handoff/2026-09-27-002618Z-handoff.md) · [Mockup index](../public/README.md) · [Style guide](../public/css/style-guide.html) · [Decisions](Decisions.md) through D-118 · [Open Questions](Open%20Questions.md) · [Future Ideas](Future%20Ideas.md).
+[Current handoff](../handoff/2026-09-28-091934Z-handoff.md) · [Mockup index](../public/README.md) · [Style guide](../public/css/style-guide.html) · [Decisions](Decisions.md) through D-119 · [Open Questions](Open%20Questions.md) · [Future Ideas](Future%20Ideas.md).
 
 ## Completed stages
 
@@ -58,7 +58,7 @@ Privacy follow-up: the user accepts author metadata/local directory names and re
 
 D-103–D-107 record the user's evening instructions. Managers may reconcile any storage location. Microsoft identities expose own-name editing only. Broader permission assignment and direct Unit Cost editing remain postponed. Relocations have one owner-selected source/destination and independent copies. Location counts begin empty, accept actual counts, and advance with Tab/Enter. Purchase Drafts/Requests require no fields; owners are permanent; Procurement handles orders and backward status movement; every status change logs actor/time; no notifications now.
 
-Q-042 records backward purchase transitions versus Received finality and Cancelled restoration. Demo retains Received finality; earlier-stage reversals are Agent Suggestions. Q-012 retains relocation fulfillment/partial/discrepancy policies. Q-039 retains first-save note presentation. Existing event exception/finalization-authority questions remain. Candidate permissions, catalog placeholders, exact validation/layout/date policies, and the additional event presentation are unaccepted proposals. FI-001 partial purchase deliveries remains the only user-directed release deferral.
+Q-042 records backward purchase transitions versus Received finality and Cancelled restoration. Demo retains Received finality; earlier-stage reversals are Agent Suggestions. Q-012 retains permanent receipt discrepancies, additional outbound shipments and unfulfilled remainder; D-115 settles stage authority and saved split-arrival receiving drafts. Q-039 retains first-save note presentation. Existing event exception/finalization-authority questions remain. Candidate permissions, catalog placeholders, exact validation/layout/date policies, and the additional event presentation are unaccepted proposals. FI-001 partial purchase deliveries remains the only user-directed release deferral.
 
 ## Preserved decisions
 
@@ -138,3 +138,7 @@ D-119: the homepage now opens an introduction with a short project overview and 
 
 GitHub push-only JSON webhook `687000598` is active with SSL verification enabled. Its initial ping received HTTP 200 from Forge. **Push-to-deploy verified:** the push of commit `33d48aa` automatically produced successful [Forge deployment 78750362](https://forge.laravel.com/tech-for-service/delugeia01/3401224/deployments/78750362) in two seconds. The user authorized committing and pushing all Git-eligible changes, including the handoff rule, hosting documentation, and setup screenshots. Deployment URLs containing tokens and their screenshots belong only in ignored `_secrets/`; never include them in tracked files.
 
+
+## Planning handoff prepared
+
+The [new handoff](../handoff/2026-09-28-091934Z-handoff.md) consolidates planning decisions through D-119, current review questions, verification limits, browser-only storage and the Catalog sharing exception, public repository/Forge deployment, and next-agent directions. README and the question queue now point to the current review stage. Historical notes and snapshots are preserved; this chat’s original snapshot remains `status/_archive/2026-09-27-000628Z/`, with no repeat snapshot. Handoff packaging commits and pushes all Git-eligible changes after these documentation updates; the final response reports the resulting commit and verified synchronization. No mockup/application code changed during this handoff.

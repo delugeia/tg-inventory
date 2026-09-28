@@ -10,7 +10,7 @@ Inventory Behavior and the main purchase rules are settled for this requirements
 
 ### Next topic — Review Catalog and existing workflow drafts
 
-The user authorized autonomous drafts for User Management, Relocation Requests, Location Reconciliation, and Purchase Requests (D-103–D-107), and will review after returning. Continue without blocking questions during this work; preserve previous item/index/cost decisions and label unsettled choices Agent Suggestions. The [mockup index](../public/README.md) links the drafts and completed grading assessment (D-108). FI-002 retains optional request-index text search for consideration; it is not an accepted requirement.
+The requested drafts and subsequent Catalog/refinement work are complete (D-103–D-117). Continue with the user’s chosen review topic; preserve previous item/index/cost decisions and label unsettled choices Agent Suggestions. Public hosting and the introduction are complete (D-118/D-119); no further autonomous feature work or application implementation is authorized. The [mockup index](../public/README.md) links the drafts and completed grading assessment (D-108). FI-002 retains optional request-index text search for consideration; it is not an accepted requirement.
 
 The shared style pass is complete (D-109); the [style guide](../public/css/style-guide.html) remains a provisional starting point for later design. This does not settle the workflow questions below.
 
@@ -18,9 +18,9 @@ Current review: the [Catalog draft](../public/catalog/index.html) now covers Cat
 
 Next workflow question for later review: how should permanent relocation receipt discrepancies and unfulfilled requested quantities be closed? D-115 settles stage permissions, Requested edits, split arrivals and draft receiving counts; Q-012 retains the remaining exception policy. The mockup still requires received = sent before Complete.
 
-Upcoming queue (Agent Suggestion, after the user returns):
+Upcoming queue (Agent Suggestion; user chooses the order):
 
-1. Review the four requested drafts plus the Agent Suggestion event-reconciliation draft and their labeled assumptions.
+1. Review Catalog and the existing workflow drafts, including their labeled assumptions.
 2. Q-012: permanent receipt discrepancies, additional outbound shipments and unfulfilled remainder; authority and Requested editing are settled in D-115.
 3. Q-042: purchase backward/cancelled transitions, expectation effects, and dates; Q-039 first-save note presentation.
 4. Return to parked catalog/item/index questions when desired. Broader assignment/direct Unit Cost permissions remain postponed.
