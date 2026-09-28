@@ -28,24 +28,32 @@ for (const mockup of mockups) {
 }
 
 function selectMockup() {
-  const selected = mockups.find(mockup => `#${mockup.id}` === location.hash) || mockups[0];
+  const selected = mockups.find(mockup => `#${mockup.id}` === location.hash);
+  const introduction = !selected;
+  document.querySelector('#introduction').hidden = !introduction;
+  const home = document.querySelector('.brand-home');
+  if (introduction) home.setAttribute('aria-current', 'page');
+  else home.removeAttribute('aria-current');
   // Keep visited workflows alive so switching the sidebar preserves unsaved inputs.
   // No child DOM, data, history, or storage is changed by this wrapper.
-  if (!frames.has(selected.id)) {
+  if (selected && !frames.has(selected.id)) {
     const frame = document.createElement('iframe');
     frame.title = `${selected.label} mockup and workflow`;
     frame.src = `${selected.folder}/index.html`;
     frames.set(selected.id, frame);
     panes.append(frame);
   }
-  for (const [id, frame] of frames) frame.hidden = id !== selected.id;
+  for (const [id, frame] of frames) frame.hidden = id !== selected?.id;
   for (const [id, link] of links) {
-    if (id === selected.id) link.setAttribute('aria-current', 'page');
+    if (id === selected?.id) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   }
-  document.querySelector('#selection-title').textContent = selected.label;
-  document.querySelector('#selection-open').href = `${selected.folder}/index.html`;
-  document.title = `${selected.label} · TG Inventory Mockups`;
+  document.querySelector('#selection-title').textContent = selected?.label || 'Introduction';
+  const open = document.querySelector('#selection-open');
+  open.hidden = introduction;
+  if (selected) open.href = `${selected.folder}/index.html`;
+  else open.removeAttribute('href');
+  document.title = `${selected?.label || 'Introduction'} · TG Inventory Mockups`;
 }
 
 window.addEventListener('hashchange', selectMockup);

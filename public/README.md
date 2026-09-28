@@ -1,6 +1,6 @@
 # Mockup index
 
-[Open the interactive walkthrough](index.html). The narrow sidebar follows the presentation order and opens each independent mockup in the right pane. Visited workflows stay loaded when switching sections, preserving in-memory edits until navigation/reload closes them. Internal links continue within that workflow. Open separately starts that mockup at its entry page in a new tab, not a copy of unsaved work.
+[Open the interactive walkthrough](index.html). The walkthrough initially shows a brief project introduction explaining that all examples are mockups with no live data and no synchronization between independent mockups. Clicking the TG Inventory brand returns to it; it has no separate sidebar entry. The narrow sidebar follows the presentation order and opens each independent mockup in the right pane. Visited workflows stay loaded when switching sections, preserving in-memory edits until navigation/reload closes them. Internal links continue within that workflow. Open separately starts that mockup at its entry page in a new tab, not a copy of unsaved work.
 
 Wrapper sources: `index.html` (shell), [css/style.css](css/style.css) (shared theme and shell layout), `index.js` (ordered navigation and lazy-loaded preview panes). Add every future mockup to the `mockups` list in `index.js` and the table below, following its first appearance in [Presentation Outline](../docs/Presentation%20Outline.md). The wrapper does not synchronize sample data.
 

@@ -20,7 +20,7 @@ A rough [User’s Guide outline](docs/Users%20Guide.md) covers major workflows, 
 
 A [presentation outline](docs/Presentation%20Outline.md) introduces the project and walks through all nine mockups, with slide talking points, demo steps, and presenter notes.
 
-Open the [interactive mockup walkthrough](public/index.html) for sidebar navigation through all nine examples in presentation order.
+Open the [interactive mockup walkthrough](public/index.html) for a brief introduction and sidebar navigation through all nine examples in presentation order. The TG Inventory brand returns to the introduction.
 
 Use the [approved sample names](_data/sample-names.md) for sample people, storage locations, and events throughout future project work.
 

@@ -516,6 +516,16 @@ body[data-mockup="inventory-index"] .inactive { display:block; font-size:11px; c
 }
 
 /* 4. Walkthrough shell only. */
+@layer components {
+.brand-home { color: var(--accent); text-decoration: none; }
+.brand-home:hover { text-decoration: underline; }
+.walkthrough-intro { height: 100%; overflow-y: auto; padding: clamp(20px, 5vw, 64px); }
+.intro-card { max-width: 740px; margin: 0 auto; padding: clamp(22px, 4vw, 44px); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.intro-card h2 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; margin: 14px 0 20px; color: var(--accent); }
+.intro-card p { line-height: 1.7; }
+.intro-card .intro-eyebrow { font-size: 12px; font-weight: 650; color: var(--muted); margin: 0; }
+.intro-card .intro-next { color: var(--muted); margin-bottom: 0; }
+}
 @layer shell {
 @scope (body[data-shell]) {
 

@@ -927,6 +927,14 @@ Date: 2026-09-28. Origin: User decision.
 - The user confirmed the current project contains no secrets or PII and authorized the initial push. This does not authorize application implementation.
 - 2026-09-28 follow-up: a request to prepare for a handoff includes authorization to commit and push all Git-eligible project changes after completing the other updates, handoff note, and directions. Honor all ignore rules and verify synchronization; report any blocker or remaining unpushed work.
 
+### D-119 — Walkthrough introduction as the homepage
+
+Date: 2026-09-28. Origin: User decision.
+
+- Open the walkthrough on a brief project introduction instead of Users. Clicking the TG Inventory brand returns to it; no additional navigation entry is needed.
+- Clearly state that everything shown is a mockup, there is no live data, and edits in one independent mockup do not update the others, with Catalog versus Inventory as an example.
+- Preserve direct workflow links and visited mockup state. This is a mockup presentation change, not application implementation or specification approval.
+
 ## Proposals under discussion
 
 

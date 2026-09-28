@@ -128,6 +128,10 @@ The root `.gitignore` excludes `_private/` (including the local `shh.txt` test),
 
 Handoff convention (D-118 follow-up): when the user requests handoff preparation, finish all updates and the handoff directions, then commit and push all Git-eligible changes as the final step, honoring `.gitignore` and verifying the local/remote branches are synced.
 
+## Walkthrough introduction
+
+D-119: the homepage now opens an introduction with a short project overview and clear mockup/no-live-data/independent-example wording. The TG Inventory brand returns to it; no extra sidebar entry was added. Open separately is hidden on the introduction. Shared CSS, the style guide, and walkthrough notes are updated. JavaScript syntax and local Chrome checks passed for default introduction, Users navigation, brand return, and preservation of an internal profile page across switching. Publishing this visible change exercises the configured push-to-deploy workflow.
+
 ## Live mockups and Forge deployment
 
 2026-09-28 UTC: [Live walkthrough](https://tg-inventory.delugeia.com/) verified over HTTPS. Forge site `3401224` on `delugeia01` uses Custom Git (`delugeia/tg-inventory`, `main`), a site-specific read-only GitHub deploy key, isolated user `tginventory`, and `/public` as its web directory. The user enabled redirects from `www`; both hostnames resolve to server IP `135.233.112.7`. Let's Encrypt was installed through Forge. The user submitted all setup forms.
