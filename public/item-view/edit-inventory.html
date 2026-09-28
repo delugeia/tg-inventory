@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edit Inventory · He/Him Pronoun Ribbon</title>
+  
+  <script src="../inventory-order.js?v=location-order" defer></script><script src="inventory-model.js?v=catalog-final" defer></script>
+  <script src="edit-inventory.js?v=catalog-final" defer></script>
+<script src="../mockup-layout.js?v=relocation-stages" defer></script><link rel="stylesheet" href="../css/style.css?v=catalog"></head>
+<body data-mockup="item-view">
+<main class="edit-page">
+  <div class="preview-note" data-mockup-controls>Draft inventory editor <span>Illustrative data · Saved in this tab only</span></div>
+  <a href="index.html" class="back-link" id="back-link">← Item view</a>
+  <header>
+    <div class="eyebrow">He/Him Pronoun Ribbon</div>
+    <div class="title-row"><h1>Edit Inventory</h1></div>
+    <p class="edit-intro">Set a quantity, add or subtract an adjustment, or use both. New quantity = Set + Adjust.</p>
+  </header>
+  <p id="form-error" class="form-error" role="alert" hidden></p>
+  <noscript><p class="form-error">JavaScript is required for the inventory editor.</p></noscript>
+  <form id="inventory-form" class="compact-editor" novalidate>
+    <section aria-labelledby="storage-title">
+      <div class="section-heading"><h2 id="storage-title">Storage locations</h2><span>Individual ribbons</span></div>
+      <div class="inventory-edit-scroll" tabindex="0" role="region" aria-label="Storage inventory editor">
+        <div class="inventory-edit-grid">
+          <div class="inventory-columns column-headings" aria-hidden="true"><span>Location</span><span>Set</span><span>Adjust</span><span>Rationale <span class="optional">(optional)</span></span><span class="number">Current</span><span class="number">New</span></div>
+          <div id="location-inputs"></div>
+          <div class="inventory-total inventory-columns">
+            <h3 class="total-context">Total Available</h3>
+            <span id="original-total" class="total-value number" aria-label="Current total available"></span>
+            <span id="new-total" class="total-value number" aria-label="New total available" aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="edit-footer">
+      <p class="helper">Continue to review before saving. Rationale is optional.<br>Events, In Transit, Ordered, and unit cost stay unchanged.</p>
+      <div class="form-actions"><button type="button" id="cancel" class="secondary">Cancel</button><button type="submit" id="continue" class="primary">Continue</button></div>
+    </div>
+  </form>
+  <dialog id="discard-dialog" aria-labelledby="discard-title" aria-describedby="discard-description">
+    <h2 id="discard-title">Discard unsaved changes?</h2>
+    <p id="discard-description">Your inventory changes and rationales have not been saved.</p>
+    <div class="form-actions"><button type="button" class="secondary" id="keep-editing" autofocus>Keep editing</button><button type="button" class="primary" id="discard">Discard changes</button></div>
+  </dialog>
+</main>
+</body>
+</html>

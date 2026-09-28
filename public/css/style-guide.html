@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TG Inventory · Provisional style guide</title>
+  <link rel="stylesheet" href="style.css?v=catalog">
+  <script src="style-guide.js?v=location-order" defer></script>
+</head>
+<body>
+<main>
+  <div class="mockup-info">Draft visual starting point. The final design remains open. All examples below use the same stylesheet as the mockups.</div>
+  <header class="page-header">
+    <nav class="page-nav" aria-label="Page navigation"><a href="../index.html">← Mockup walkthrough</a><span>Design reference</span></nav>
+    <div class="page-title-row"><h1>TG Inventory style guide</h1><span class="badge" data-state="pending">Draft</span></div>
+    <p class="page-intro">Shared components, action language, and layout conventions for the developer and future designers.</p>
+  </header>
+  <nav class="guide-nav" aria-label="Guide sections">
+    <a href="#theme">Theme</a><a href="#headers">Headers &amp; navigation</a><a href="#actions">Actions</a><a href="#forms">Forms</a><a href="#tables">Tables</a><a href="#notices">Notices</a><a href="#dialogs">Dialogs</a><a href="#catalog-navigation">Catalog</a><a href="#maintenance">Maintenance</a>
+  </nav>
+
+  <section id="theme">
+    <h2>Theme tokens</h2>
+    <p>Change the <code>:root</code> variables in <code>style.css</code> to change the theme across the site. Purple identifies ordinary application actions. Red identifies cancellation or discarding. Yellow mockup information is separate from production notifications.</p>
+    <div class="guide-grid"><div class="swatch">Primary / selected<br><code>--accent, --accent-soft</code></div><div class="swatch" data-tone="surface">Content surface<br><code>--surface, --text, --line</code></div><div class="swatch" data-tone="danger">Cancel / discard<br><code>--danger, --danger-soft</code></div></div>
+    <p>Shared font: Segoe UI with system fallbacks. Body 15px, page title 28px, section title 18px, controls 14px, labels 13px, navigation and ordinary status badges 12px; title status badges 22px (20px on narrow screens). Use the common spacing and radius variables rather than adding a second palette.</p>
+  </section>
+
+  <section id="headers">
+    <h2>Headers and navigation</h2>
+    <header class="page-header">
+      <nav class="page-nav" aria-label="Example page navigation"><a href="#headers">← Purchase requests</a><span>PR-203</span></nav>
+      <div class="page-title-row"><h1>Wristband resupply</h1><span class="badge" data-state="active">Ordered</span></div>
+      <p class="page-intro">Purchase details and recorded activity.</p>
+    </header>
+    <p>Sequence: navigation line, title with status immediately beside it, then one short introduction. On small screens the status may wrap within the title row. Put actions below the header in the relevant toolbar or action row. Keep this structure for each workflow step.</p>
+    <div class="bar"><span class="badge" data-state="pending">Draft</span><span class="badge" data-state="pending">Request</span><span class="badge" data-state="active">Active</span><span class="badge" data-state="active">Ordered</span><span class="badge" data-state="active">Shipped</span><span class="badge" data-state="pending">Requested</span> <span class="badge" data-state="active">Receiving</span> <span class="badge" data-state="complete">Complete</span> <span class="badge" data-state="complete">Received</span><span class="badge" data-state="complete">Finalized</span><span class="badge" data-state="cancelled">Cancelled</span><span class="readonly-badge" data-state="readonly">View only</span></div>
+    <p>Status always includes text. Use yellow for Draft and Request; green for Active, Ordered, Shipped, and Receiving; purple for Received, Finalized, and Complete. Requested uses the same yellow as Request. Cancelled remains red; read-only/inactive labels remain neutral gray. Title badges use the identical color scheme with a larger font close to the page title size. Ordinary table/list badges stay compact. A corrected event report retains its explicit “Corrected report” text.</p>
+    <pre class="guide-code">&lt;header class="page-header"&gt;
+  &lt;nav class="page-nav" aria-label="Page navigation"&gt;…&lt;/nav&gt;
+  &lt;div class="page-title-row"&gt;
+    &lt;h1&gt;Page title&lt;/h1&gt;
+    &lt;span class="badge" data-state="pending"&gt;Draft&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;p class="page-intro"&gt;Short description of this step.&lt;/p&gt;
+&lt;/header&gt;</pre>
+  </section>
+
+  <section id="actions">
+    <h2>Action placement and wording</h2>
+    <p>Page and section action rows align right. Put the primary action last in DOM order and visual order. Secondary actions precede it. Inline actions stay with their target: Add destination aligns right inside its table cell, Remove stays beside its row, and search controls remain beside the search field. Navigation links stay in the navigation line.</p>
+    <div class="actions"><button class="cancel-action" type="button">Cancel</button><button type="button">Edit</button><button class="primary" type="button">Save</button></div>
+    <div class="table-scroll"><table><thead><tr><th>Label</th><th>Meaning</th><th>Appearance</th></tr></thead><tbody>
+      <tr><td>Save</td><td>Persist edits without changing workflow status.</td><td>Purple primary</td></tr>
+      <tr><td>Save draft / Save progress</td><td>Persist a Draft or provisional event counts. Use the qualifier when the distinction matters.</td><td>Purple primary, or secondary when Review is the next main action</td></tr>
+      <tr><td>Save corrections / Save report correction</td><td>Post reviewed inventory corrections or a report-only correction, respectively. Keep their different effects explicit.</td><td>Purple primary</td></tr>
+      <tr><td>Mark ordered / Mark shipped</td><td>Change a workflow status. Do not call this ordinary Save.</td><td>Purple primary at confirmation</td></tr>
+      <tr><td>Review receipt / Review finalization</td><td>Preview effects without posting.</td><td>Purple primary</td></tr>
+      <tr><td>Confirm receipt / Finalize event</td><td>Commit the explicitly described final action.</td><td>Purple primary with a prominent consequence notice</td></tr>
+      <tr><td>Cancel</td><td>Leave the current unsaved step. Existing dirty-change protection still applies.</td><td>Red outline</td></tr>
+      <tr><td>Discard changes / Discard counts</td><td>Explicitly abandon the named unsaved work.</td><td>Red outline, or filled red for the final discard confirmation</td></tr>
+      <tr><td>Cancel request</td><td>Change the saved request to Cancelled. Keep the object name to distinguish it from leaving an editor.</td><td>Red outline with explicit confirmation</td></tr>
+      <tr><td>Keep editing / Keep reviewing</td><td>Dismiss a discard confirmation and retain work.</td><td>Secondary</td></tr>
+      <tr><td>Download CSV / Print worksheet</td><td>Export or print the current result.</td><td>Secondary, right-aligned at its section boundary</td></tr>
+    </tbody></table></div>
+    <div class="actions"><button type="button" disabled>Download CSV</button><button type="button">Download CSV</button><button class="danger" type="button">Cancel request</button></div>
+    <pre class="guide-code">&lt;div class="actions"&gt;
+  &lt;button type="button" class="cancel-action"&gt;Cancel&lt;/button&gt;
+  &lt;button type="submit" class="primary"&gt;Save&lt;/button&gt;
+&lt;/div&gt;</pre>
+  </section>
+
+  <section id="forms">
+    <h2>Forms and local actions</h2>
+    <p>Labels sit above fields. Optional values say “optional.” Preserve blank versus zero wherever the specification distinguishes them. Do not use placeholder text as the only label.</p>
+    <div class="guide-grid"><label>Title (optional)<input placeholder="Request title"></label><label>Destination<select><option>Central</option><option>Indianapolis IN</option></select></label><label>Counted units<input inputmode="numeric" placeholder="Leave blank if uncounted"></label><label>Microsoft email<input value="gabby.barloon@example.org" disabled></label></div>
+    <label>Rationale (optional)<textarea rows="2"></textarea></label>
+    <h3>Collection filters</h3>
+    <p>Each checkbox label occupies its own line within a column. Long labels wrap within that option; adjacent options never run together.</p>
+    <div class="collection-grid"><label class="check"><input type="checkbox">Buttons : Buttons</label><label class="check"><input type="checkbox">Calendar : Seasons of Pride</label><label class="check"><input type="checkbox">Enamel Pins : Animals</label><label class="check"><input type="checkbox">Ribbons : Pronouns</label><label class="check"><input type="checkbox">Shipping : Boxes</label><label class="check"><input type="checkbox">Wristbands : Wristbands</label></div>
+    <div class="actions"><button class="cancel-action" type="button">Cancel</button><button class="primary" type="button">Save</button></div>
+  </section>
+
+  <section id="record-fields"><h2>Record metadata</h2><dl class="record-meta"><div><dt>Changed by</dt><dd>Jarod Nash</dd></div><div><dt>Recorded</dt><dd>Sep 25, 2026, 2:14 PM</dd></div><div><dt>Item SKU at the time</dt><dd>RP_HEHIM</dd></div></dl><p>Use muted, bold labels and regular values in a three-column definition list, stacking on narrow screens.</p></section>
+  <section id="location-filters"><h2>Location filters</h2><div class="location-filter-grid"><fieldset class="filter-group"><legend>Storage locations</legend><div class="check-list"><label class="check"><input type="checkbox">Central</label><label class="check"><input type="checkbox">Ames IA</label><label class="check"><input type="checkbox">Boston MA</label><label class="check"><input type="checkbox">Indianapolis IN</label><label class="check"><input type="checkbox">Milwaukee WI</label></div></fieldset><fieldset class="filter-group"><legend>Active events and incoming inventory</legend><div class="check-list"><label class="check"><input type="checkbox">Gen Con</label><label class="check"><input type="checkbox">In Transit</label><label class="check"><input type="checkbox">Ordered</label></div></fieldset></div><p>Keep storage and other inventory areas in separate columns. No selection shows columns with nonzero balances in the results; explicit selections show only those columns, including zero balances. Item details retain all locations. Reconciliation uses the same search and collection controls with one required storage-location selector.</p></section>
+  <section id="tables">
+    <div class="section-head"><h2>Tables</h2><span class="muted">Individual units</span></div>
+    <p>Use one table header treatment, left-aligned descriptions, right-aligned numbers with tabular figures, and horizontal scrolling where needed. Monetary precision and zero display follow each workflow’s specification. Keep row actions beside their target.</p>
+    <div class="table-scroll" tabindex="0" aria-label="Example inventory table"><table><thead><tr><th scope="col">Item</th><th scope="col" class="number">Available</th><th scope="col" class="number">Ordered</th><th scope="col">Action</th></tr></thead><tbody>
+      <tr class="group"><td colspan="4">Ribbons : Pronouns</td></tr>
+      <tr><td><a href="../item-view/index.html">He/Him Pronoun Ribbon</a></td><td class="number">2,550</td><td class="number">1,500</td><td><button class="small row-action" type="button">Add item</button></td></tr>
+      <tr><td>Example with no stock</td><td class="number">—</td><td class="number">—</td><td></td></tr>
+    </tbody></table></div>
+    <div class="download-row"><button type="button">Download CSV</button></div>
+    <p>The inventory index retains its fixed headings/name column and conditional columns. The item view retains the agreed one-third inventory and two-thirds details layout. These are layout exceptions, not separate themes.</p>
+    <h3>Location order</h3>
+    <p>For location rows, columns, selectors, and destination summaries: Central first; other storage locations alphabetically; active or inventory-affecting events alphabetically; In Transit; Ordered. Keep existing visibility rules. Order the display, preserving each location’s quantities and selected value. Transaction histories retain their chronological order.</p>
+    <ol><li>Central</li><li>Ames IA</li><li>Boston MA</li><li>Indianapolis IN</li><li>Milwaukee WI</li><li>Gamehole Con (event)</li><li>Gen Con (event)</li><li>Origins (event)</li><li>In Transit</li><li>Ordered</li></ol>
+    <p>Mockups share <code>inventory-order.js</code>. For future dynamic event names, pass the explicit <code>event</code> kind to its comparator. Placeholder choices stay first and Unknown / external stays outside the inventory-location groups.</p>
+  </section>
+
+  <section id="request-indexes"><h2>Request index tables</h2><p>Only the purchase and relocation request indexes use these column sequences. Display one date, Last Updated, then the linked title without a second-line ID. Keep Request ID in its own final column.</p><div class="table-scroll"><table><thead><tr><th>Last Updated</th><th>Title</th><th>Owner</th><th>Status</th><th>Request ID</th></tr></thead><tbody><tr><td>9/26/2026</td><td>Wristband resupply</td><td>Gabby Barloon</td><td><span class="badge" data-state="pending">Request</span></td><td>PR-203</td></tr></tbody></table><table><thead><tr><th>Last Updated</th><th>Title</th><th>Source</th><th>Destination</th><th>Status</th><th>Request ID</th></tr></thead><tbody><tr><td>9/26/2026</td><td>Ribbon restock</td><td>Central</td><td>Ames IA</td><td><span class="badge" data-state="pending">Request</span></td><td>RR-103</td></tr></tbody></table></div><h3>Location-count worksheet</h3><p>All pages clear the html/body page background in print styles, even with Background graphics enabled; content backgrounds such as table groups and status labels remain intact. Only the Print Worksheet view also uses a white page background on screen. Its collection sub-header rows retain their purple background with background graphics enabled. Other reconciliation steps keep the standard page background. Entering this worksheet opens the browser print dialog after rendering; retain the Print worksheet button for reprinting. Cancelling the dialog leaves the worksheet visible.</p></section>
+  <section id="request-review"><h2>Draft review and status filters</h2><fieldset class="filter-group status-filter"><legend>Status</legend><div class="status-filter-list"><label class="check"><input type="checkbox" checked>Draft</label><label class="check"><input type="checkbox" checked>Requested</label><label class="check"><input type="checkbox" checked>Shipped</label><label class="check"><input type="checkbox" checked>Receiving</label><label class="check"><input type="checkbox">Complete</label><label class="check"><input type="checkbox">Cancelled</label></div></fieldset><p>The relocation index uses independently selectable status checkboxes; Complete and Cancelled are off by default. Selecting none shows no rows. Keep selections when returning within the mockup.</p><div class="actions"><button type="button">Save draft</button><button type="button" class="primary">Review request</button></div><div class="actions"><button type="button">Edit draft</button><button type="button" class="primary">Submit request</button></div><p>Draft editing leads to a read-only request review. Edit draft preserves values; Submit request alone changes the stage. Require a nonblank title. A separate Edit title dialog lets the owner or a Location Manager rename any stage without unlocking other fields.</p></section>
+  <section id="relocation-items"><h2>Relocation requested items</h2><section class="requested-panel"><h3>Requested items</h3><div class="scroll"><table class="requested-table"><thead><tr><th>Item</th><th>Source · Central</th><th>Destination · Ames IA</th><th class="number">Request</th><th class="number">Sent</th></tr></thead><tbody><tr class="group"><td colspan="5">Ribbons : Identity</td></tr><tr><td>Gaymer Ribbon</td><td class="number">7,500 → 5,500</td><td class="number">150 → 2,150</td><td class="number">2,000</td><td class="number">1,900</td></tr></tbody></table></div></section><p>Use this grouped base table across edit, view, fulfillment, receiving, review, and packing. The source/destination arrows are current stock to the projection after the requested quantity, not a second posting. Editing uses a Request input; fulfillment adds Sent; receiving adds Received. Packing has a blank Sent column. Keep Requested items in a separate bordered section above inventory search.</p><h3>Multiple tracking lines</h3><div class="tracking-line"><label>Carrier<select><option>USPS</option><option>UPS</option><option>FedEx</option><option>DHL</option><option>Other</option></select></label><label>Tracking number<input placeholder="Tracking number"></label><button type="button">Remove</button></div><p>Each line has its own carrier. Other may include an https tracking URL. View pages link to carrier tracking in a separate tab. Shipping and receiving are full workflow pages with Save, a review step, and a final confirmation.</p></section>
+  <section id="notices">
+    <h2>Notifications and mockup information</h2>
+    <div class="notice" role="status">Changes saved.</div>
+    <div class="alert warning" role="status">Search settings changed. Select Search to update results.</div>
+    <div class="alert error" role="alert">Enter a whole counted quantity.</div>
+    <div class="alert info" role="status">This record is read-only.</div>
+    <div class="mockup-info">Local examples only. Permission assignment remains undecided.</div>
+    <p>Success uses green, warnings use amber, errors use red, and informational notices use blue. Include explanatory text rather than relying on color. Announce errors with <code>role="alert"</code> and focus them when needed. The smaller yellow <code>mockup-info</code> banner has no heading and contains only necessary existing demo notes or controls. It never replaces a save result or a finalization warning.</p>
+  </section>
+
+  <section id="dialogs">
+    <h2>Confirmation dialogs</h2>
+    <p>Use a focused native dialog with a clear action title, concise consequences, and right-aligned actions. Red identifies discarding/cancelling, not ordinary finalization. Escape keeps the user in the previous step without committing.</p>
+    <div class="actions"><button type="button" id="open-example-dialog">Preview discard dialog</button></div>
+    <dialog id="example-dialog" aria-labelledby="example-dialog-title"><h2 id="example-dialog-title">Discard changes?</h2><p>Your unsaved edits will be discarded. Saved data stays unchanged.</p><div class="actions"><button id="keep-example" type="button">Keep editing</button><button id="discard-example" class="primary danger" type="button">Discard changes</button></div></dialog>
+  </section>
+
+  <section id="catalog-navigation">
+    <h2>Catalog section navigation</h2>
+    <nav class="catalog-tabs" aria-label="Catalog example sections"><button aria-pressed="true">Categories</button><button aria-pressed="false">Collections</button><button aria-pressed="false">Items</button></nav>
+    <p>Use a purple selected state and aria-pressed for local section buttons. Place the create action at the right of the section heading. Use linked names for detail views, compact status badges in tables, and the shared enlarged badge beside a detail title.</p>
+    <div class="section-heading"><h3>Collections</h3><button class="primary">Create collection</button></div>
+    <div class="scroll"><table><thead><tr><th>Collection</th><th>Category</th><th>SKU prefix</th><th>Items</th><th>Status</th></tr></thead><tbody><tr><td>Pronouns</td><td>Ribbons</td><td>RP_</td><td>0</td><td><span class="badge" data-state="active">Active</span></td></tr></tbody></table></div>
+    <p>Inactive and Archived badges use the neutral treatment. Keep lifecycle actions with the selected record; changing a parent status does not demonstrate a child cascade in this draft.</p>
+  </section>
+  <section id="maintenance">
+    <h2>Developer and designer maintenance</h2>
+    <p><strong>Single stylesheet:</strong> every page links directly to <code>public/css/style.css</code>. There are no per-mockup theme stylesheets or inline styles. Keep new theme values in tokens and new reusable patterns in the shared components section. The scoped layout section holds genuine workflow geometry only.</p>
+    <p><strong>New or changed components:</strong> update this guide in the same change, include the relevant states, then inspect affected mockups in Chrome. Check keyboard focus, disabled states, narrow layouts, tables, dialogs, and print layouts. Preserve inventory and costing semantics.</p>
+    <p><strong>Markup:</strong> use the classes illustrated here directly in future application templates. The existing prototypes also use <code>mockup-layout.js</code> to normalize dynamically generated legacy markup. That adapter is a mockup convenience, not a required application architecture.</p>
+    <p><strong>Scope:</strong> this is a provisional starting point. It does not approve a final visual design, new permissions, or application implementation.</p>
+  </section>
+</main>
+</body>
+</html>

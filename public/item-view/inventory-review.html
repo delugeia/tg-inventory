@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review inventory changes · He/Him Pronoun Ribbon</title>
+  
+  <script src="../inventory-order.js?v=location-order" defer></script><script src="inventory-model.js?v=catalog-final" defer></script>
+  <script src="inventory-review.js?v=catalog-final" defer></script>
+<script src="../mockup-layout.js?v=relocation-stages" defer></script><link rel="stylesheet" href="../css/style.css?v=catalog"></head>
+<body data-mockup="item-view">
+<main class="edit-page results-page">
+  <div class="preview-note" data-mockup-controls>Draft inventory review <span>Illustrative data · Nothing saved yet</span></div>
+  <header>
+    <div class="eyebrow">He/Him Pronoun Ribbon</div>
+    <div class="title-row"><h1 id="review-title">Review inventory changes</h1></div>
+    <p class="edit-intro" id="review-summary" role="status">These entries will be recorded in History if you select Save.</p>
+  </header>
+  <p id="review-error" class="form-error" role="alert" hidden></p>
+  <section id="review-section" aria-labelledby="proposed-title" hidden>
+    <div class="section-heading"><h2 id="proposed-title">Will be recorded if saved</h2></div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Proposed inventory corrections">
+      <table>
+        <thead><tr><th scope="col">Date</th><th scope="col">Description</th><th scope="col" class="number">Quantity</th><th scope="col" class="number">Unit Cost</th></tr></thead>
+        <tbody id="proposed-changes"></tbody>
+      </table>
+    </div>
+  </section>
+  <noscript><p class="form-error">JavaScript is required to review inventory changes.</p></noscript>
+  <div class="form-actions"><button type="button" class="secondary" id="review-cancel">Cancel</button><button type="button" class="secondary" id="review-edit">Edit</button><button type="button" class="primary" id="review-save">Save</button></div>
+  <dialog id="discard-dialog" aria-labelledby="discard-title" aria-describedby="discard-description">
+    <h2 id="discard-title">Discard unsaved changes?</h2>
+    <p id="discard-description">The proposed inventory corrections and rationales will be discarded. Nothing will be recorded in History.</p>
+    <div class="form-actions"><button type="button" class="secondary" id="keep-reviewing" autofocus>Keep reviewing</button><button type="button" class="primary" id="discard">Discard changes</button></div>
+  </dialog>
+</main>
+</body>
+</html>

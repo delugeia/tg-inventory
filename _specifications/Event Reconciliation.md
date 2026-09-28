@@ -1,0 +1,17 @@
+# Event reconciliation and report corrections
+
+State: Draft. Created 2026-09-27 UTC. [Mockup](../public/event-reconciliation/index.html) · [Notes](../public/event-reconciliation/README.md). Additional mockup selection is an Agent Suggestion under D-103, not approval of a new product requirement. It consolidates established D-013–D-025/D-028/D-038 behavior from [Rough Notes Review](Rough%20Notes%20Review.md).
+
+Managers collaborate on an active event; creator ownership does not prevent other managers editing counts or recording contributions. Initial finalization authority remains Q-011. Any manager may correct a finalized report. Event creation/activation is outside the focused demo; preserve D-037's no-posting Planning state and one-time activation movement.
+
+Save progress preserves blank versus explicit zero and incomplete destination allocations. Counts stay provisional; saving does not change stock or finalized reporting. Aggregate contributions into one brought total/remaining count per item. Each event item needs a count, and destination allocations must equal that count before finalization. Default leftover destination is the initial source; overrides and multiple destinations are allowed. No source-contributor reconciliation or separate loss category is needed: distributed = brought − remaining.
+
+Record missed known-source deliveries separately, immediately moving source stock to event and updating brought totals. Unknown/external supplies use a positive event Adjustment, not an arbitrary source deduction; valuation remains Q-034. Moving supplies from another part of the same venue into the count room does not add stock again.
+
+Finalize once with prominent irreversible confirmation. It records distribution and transfers remaining stock directly to destinations, without In Transit or destination receipt. There is no reopening. After finalization, flagged manager corrections update reports only, automatically append actor/time/plain-text before/after logs, and take optional explanations. Any location inventory correction is a separate manual adjustment. No D-026 automatic posting/re-finalization is revived.
+
+Final report lists item and distributed quantity without contribution/return movements; print and CSV are required by D-023. Original inventory History remains immutable when reports are corrected. Historical report-version requirements remain Q-035; the draft retains correction logs and the original posting, not a proposed full version browser.
+
+Observable examples: blank and zero resume distinctly; incomplete allocations block finalization but allow saving; 8,250 brought and 1,800 remaining gives 6,450 distributed; an 800/1,000 split posts to both storage locations once; additional deliveries post while counts remain provisional; a post-finalization remaining change updates the report and logs it while storage, event quantities, unit costs, and stock History remain unchanged.
+
+Agent Suggestions in the demonstration: two-item fixture, simplified additional-delivery form, remaining≤brought guardrail (Q-029), count-driven default allocation until manually changed, and report correction fields. A remaining-count discrepancy has not established a production rejection policy. Q-028 movement dates, Q-029 exceptions, Q-032 direct event destinations, Q-034 external valuation, and Q-035 report-version details stay open in the single register.

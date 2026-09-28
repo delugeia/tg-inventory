@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventory results · He/Him Pronoun Ribbon</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="inventory-model.js" defer></script>
+  <script src="inventory-results.js" defer></script>
+</head>
+<body>
+<main class="edit-page results-page">
+  <div class="preview-note">Draft inventory results <span>Illustrative data · Saved in this tab only</span></div>
+  <header>
+    <div class="eyebrow">He/Him Pronoun Ribbon</div>
+    <div class="title-row"><h1 id="results-title">Inventory results</h1></div>
+    <p class="edit-intro" id="results-summary" role="status">Loading recorded changes…</p>
+  </header>
+  <section id="results-section" aria-labelledby="recorded-title" hidden>
+    <div class="section-heading"><h2 id="recorded-title">Recorded in History</h2></div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Recorded inventory corrections">
+      <table>
+        <thead><tr><th scope="col">Date</th><th scope="col">Description</th><th scope="col" class="number">Quantity</th><th scope="col" class="number">Unit Cost</th></tr></thead>
+        <tbody id="recorded-changes"></tbody>
+      </table>
+    </div>
+  </section>
+  <noscript><p class="form-error">JavaScript is required to display the recorded changes.</p></noscript>
+  <div class="form-actions"><button type="button" class="primary" id="results-ok">OK</button></div>
+</main>
+</body>
+</html>

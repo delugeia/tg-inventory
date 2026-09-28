@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>View adjustment · Item history</title>
+  
+  <script src="../inventory-order.js?v=location-order" defer></script><script src="inventory-model.js?v=catalog-final" defer></script><script src="adjustment.js?v=location-order" defer></script>
+<script src="../mockup-layout.js?v=relocation-stages" defer></script><link rel="stylesheet" href="../css/style.css?v=catalog"></head>
+<body data-mockup="item-view">
+<main class="edit-page adjustment-page">
+  <div class="preview-note" data-mockup-controls>Draft adjustment record <span id="sample-note">Illustrative data</span></div>
+  <a class="back-link" href="index.html#item-history">← Item History</a>
+  <header><div class="eyebrow" id="record-item">Item history</div><div class="title-row"><h1>View Adjustment</h1><span class="readonly-badge">View only</span></div><p class="edit-intro" id="record-summary">Loading adjustment…</p></header>
+  <div id="record-content" hidden>
+    <section class="adjustment-meta" aria-label="Who and when">
+      <dl class="record-meta"><div><dt>Changed by</dt><dd id="record-actor"></dd></div><div><dt>Recorded</dt><dd><time id="record-time"></time></dd></div><div><dt>Item SKU at the time</dt><dd id="record-sku"></dd></div></dl>
+    </section>
+    <section id="quantity-section" aria-labelledby="quantity-title" hidden>
+      <div class="section-heading"><h2 id="quantity-title">Inventory changes</h2><span id="location-count"></span></div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Recorded quantity changes">
+        <table><thead><tr><th scope="col">Storage location</th><th scope="col" class="number">Before</th><th scope="col" class="number">After</th><th scope="col" class="number">Change</th><th scope="col" class="number">Unit Cost</th></tr></thead><tbody id="quantity-records"></tbody></table>
+      </div>
+    </section>
+    <section id="cost-section" aria-labelledby="cost-title" hidden>
+      <div class="section-heading"><h2 id="cost-title">Cost change</h2><span>No quantity change</span></div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Recorded cost changes">
+        <table><thead><tr><th scope="col">Field</th><th scope="col" class="number">Before</th><th scope="col" class="number">After</th></tr></thead><tbody id="cost-records"></tbody></table>
+      </div>
+    </section>
+    <p class="helper">This is the saved record. Changes are preserved here and cannot be edited.</p>
+  </div>
+</main>
+</body>
+</html>

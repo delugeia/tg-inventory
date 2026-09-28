@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inventory mockup</title><script src="../inventory-order.js?v=location-order" defer></script><script defer src="data.js?v=location-order"></script><script defer src="mockup.js?v=location-columns"></script><script src="../mockup-layout.js?v=relocation-stages" defer></script><link rel="stylesheet" href="../css/style.css?v=catalog"></head>
+<body data-mockup="inventory-index"><main>
+<header><h1>Inventory</h1><p>Search by category, collection, or item name.</p></header><section class="search-section" aria-label="Inventory search">
+<form id="search-form">
+<label for="search">Search inventory</label>
+<div class="search-row"><input id="search" type="search" placeholder="Category, collection, or item name" autocomplete="off"><button type="submit" class="primary">Search</button><button id="show-all" type="button" class="secondary">Show All</button><button id="reset" type="button" class="quiet">Reset</button></div>
+<div class="filter-row"><button id="filter-toggle" type="button" class="secondary" aria-expanded="false" aria-controls="filters"><span id="filter-caption">Filters</span><span id="chevron" aria-hidden="true">⌄</span></button></div>
+<div id="filters" hidden><div class="filter-tools"><label class="check"><input id="include-inactive" type="checkbox">Include inactive zero-stock items</label><button id="clear-filters" type="button" class="quiet">Clear filters</button></div><fieldset class="filter-group"><legend>Collections</legend><div id="collections" class="collection-grid"></div></fieldset><div class="location-filter-grid"><fieldset class="filter-group"><legend>Storage locations</legend><div id="storage-locations" class="check-list"></div></fieldset><fieldset class="filter-group"><legend>Active events and incoming inventory</legend><div id="other-locations" class="check-list"></div></fieldset></div></div>
+</form>
+</section>
+<p id="storage-notice" class="notice" hidden>Browser storage is unavailable. Settings will only be retained while this page stays open.</p>
+<p id="changed" class="notice" role="status" hidden>Search settings changed — select Search to update results.</p>
+<section class="results-section" aria-label="Inventory results">
+<div class="results-meta"><span id="result-count" role="status">No results loaded</span><span class="sample-label" data-mockup-note>Sample inventory</span></div>
+<div id="table-scroll" class="table-scroll" tabindex="0" aria-label="Inventory table; scroll for more rows and locations"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div>
+<div class="download-row"><button id="download" disabled>Download CSV</button></div>
+</section>
+</main></body></html>

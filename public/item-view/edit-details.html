@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edit Details · He/Him Pronoun Ribbon</title>
+  
+  <script src="../inventory-order.js?v=location-order" defer></script><script src="inventory-model.js?v=catalog-final" defer></script><script src="edit-details.js?v=catalog-final" defer></script>
+<script src="../mockup-layout.js?v=relocation-stages" defer></script><link rel="stylesheet" href="../css/style.css?v=catalog"></head>
+<body data-mockup="item-view">
+<main class="edit-page details-page">
+  <div class="preview-note" data-mockup-controls>Draft details editor <span>Illustrative data · Saved in this tab only</span></div>
+  <a href="index.html" class="back-link" id="details-back">← Item view</a>
+  <header><div class="eyebrow" id="item-caption">He/Him Pronoun Ribbon</div><div class="title-row"><h1>Edit Details</h1></div></header>
+  <p id="details-error" class="form-error" role="alert" hidden></p>
+  <form id="details-form">
+    <div class="details-edit-layout">
+      <section aria-labelledby="identity-title">
+        <div class="section-heading"><h2 id="identity-title">Item details</h2><label class="active-check"><input type="checkbox" name="active"> Active</label></div>
+        <div class="details-fields">
+          <label class="full-field">Full Name<input type="text" name="name" required></label>
+          <label>Category<select name="category" required><option>Ribbons</option><option>Buttons</option></select></label>
+          <label>Collection<select name="collection" required></select></label>
+          <label>Variety name<input type="text" name="variety"></label>
+          <label>SKU<span class="sku-field"><span id="sku-prefix" aria-label="Collection SKU prefix">RP_</span><input type="text" name="skuSuffix" aria-label="SKU suffix" aria-describedby="sku-help"></span><span class="field-help" id="sku-help">Prefix comes from Collection.</span></label>
+          <label class="full-field">Purpose<select name="purpose"><option>Visibility</option><option>Fundraising</option><option>Consumable</option><option>Equipment</option><option>Miscellaneous</option></select></label>
+          <fieldset class="full-field program-options"><legend>Programs</legend><label><input type="checkbox" name="programs" value="Conventions"> Conventions</label><label><input type="checkbox" name="programs" value="Gayme Night"> Gayme Night</label><label><input type="checkbox" name="programs" value="Gaming Safe Space"> Gaming Safe Space</label></fieldset>
+          <label>Request bundle type<input type="text" name="bundleType" placeholder="e.g. Pack"></label>
+          <label>Request bundle quantity<input type="text" inputmode="numeric" name="bundleQuantity" aria-describedby="blank-help"></label>
+          <label class="full-field">Notes<textarea name="notes" rows="3"></textarea></label>
+        </div>
+      </section>
+      <section aria-labelledby="values-title">
+        <div class="section-heading"><h2 id="values-title">Cost &amp; values</h2><span>USD per item</span></div>
+        <div class="details-fields values-fields">
+          <p class="helper full-field" id="blank-help">Leave blank for no value. Enter 0 for an explicit zero.</p>
+          <div class="permission-examples full-field">
+            <p class="example-label">Unit Cost · permission comparison</p>
+            <label>Without permission<input type="text" inputmode="decimal" id="cost-disabled" disabled aria-label="Unit Cost — without permission"></label>
+            <label>With permission<input type="text" inputmode="decimal" name="unitCost" aria-label="Unit Cost — with permission" aria-describedby="blank-help cost-help"></label>
+            <p class="helper" id="cost-help">Two examples of the same field. Who can edit Unit Cost is still to be decided.</p>
+          </div>
+          <label class="full-field">IRS Value<input type="text" inputmode="decimal" name="irsValue" aria-describedby="blank-help"></label>
+          <label class="full-field">In-Person Ask<input type="text" inputmode="decimal" name="inPersonAsk" aria-describedby="blank-help"></label>
+          <label class="full-field">Online Ask<input type="text" inputmode="decimal" name="onlineAsk" aria-describedby="blank-help"></label>
+        </div>
+      </section>
+    </div>
+    <div class="edit-footer"><p class="helper">Changes to Unit Cost create a cost adjustment in History.</p><div class="form-actions"><button type="button" class="secondary" id="details-cancel">Cancel</button><button type="submit" class="primary">Save</button></div></div>
+  </form>
+  <dialog id="details-discard" aria-labelledby="discard-title"><h2 id="discard-title">Discard unsaved details?</h2><p>Your changes have not been saved.</p><div class="form-actions"><button type="button" class="secondary" id="details-keep" autofocus>Keep editing</button><button type="button" class="primary" id="details-confirm-discard">Discard changes</button></div></dialog>
+</main>
+</body>
+</html>

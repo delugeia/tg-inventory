@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>He/Him Pronoun Ribbon · Item view</title>
+  
+  <script src="../inventory-order.js?v=location-order" defer></script><script src="inventory-model.js?v=catalog-final" defer></script>
+  <script src="item-view.js?v=catalog-final" defer></script>
+<script src="../mockup-layout.js?v=relocation-stages" defer></script><link rel="stylesheet" href="../css/style.css?v=catalog"></head>
+<body data-mockup="item-view">
+<main>
+  <div class="preview-note" data-mockup-controls>Draft item view <span>Illustrative data · Saved in this tab only <button type="button" class="text-action" id="reset-demo">Reset demo</button></span></div>
+  <header>
+    <div class="eyebrow">Ribbons <span>/</span> Pronouns</div>
+    <div class="title-row"><h1>He/Him Pronoun Ribbon</h1><span class="status">Active</span></div>
+    <p class="sku">SKU <strong>RP_HEHIM</strong></p>
+  </header>
+  <p class="action-preview">Linked examples use separate data. Adjustment History opens saved records.</p>
+  <p id="demo-notice" class="demo-notice" role="status" hidden></p>
+
+  <div class="overview">
+    <section class="inventory" aria-labelledby="inventory-title">
+      <div class="section-heading"><h2 id="inventory-title">Inventory</h2><span>Individual ribbons</span></div>
+      <div class="balances">
+        <div class="subsection-heading"><h3>Storage locations</h3><a class="text-action" href="edit-inventory.html">Edit Inventory</a></div>
+        <dl class="quantity-list storage"><div><dt>Central</dt><dd><span>2,000</span></dd></div><div><dt>Ames IA</dt><dd><span>0</span></dd></div><div><dt>Boston MA</dt><dd><span>0</span></dd></div><div><dt>Indianapolis IN</dt><dd><span>550</span></dd></div><div><dt>Milwaukee WI</dt><dd><span>0</span></dd></div><div class="available"><dt>Total Available</dt><dd><strong>2,550</strong></dd></div></dl>
+      </div>
+    </section>
+
+    <section class="details" aria-labelledby="details-title">
+      <div class="section-heading"><h2 id="details-title">Item details</h2><a class="text-action" href="edit-details.html">Edit Details</a></div>
+      <dl class="detail-list identity-grid">
+        <div><dt>Variety</dt><dd>He/Him</dd></div>
+        <div><dt>Purpose</dt><dd>Visibility</dd></div>
+        <div><dt>Programs</dt><dd>Conventions</dd></div>
+        <div><dt>Request bundle</dt><dd>Pack of 100 ribbons</dd></div>
+        <div><dt>Category</dt><dd><a id="category-search" href="../inventory-index/index.html?category=Ribbons">Ribbons</a></dd></div>
+        <div><dt>Collection</dt><dd><a id="collection-search" href="../inventory-index/index.html?category=Ribbons&amp;collection=Pronouns">Pronouns</a></dd></div>
+      </dl>
+      <div class="costs"><h3>Cost &amp; values</h3><div class="values-grid">
+        <dl class="detail-list"><div><dt>Unit Cost</dt><dd class="cost">$0.160</dd></div><div><dt>IRS FMV <span class="term-help"><button type="button" class="help-trigger" aria-label="What does FMV mean?" aria-describedby="fmv-help">?</button><span role="tooltip" id="fmv-help">Fair Market Value</span></span></dt><dd class="muted">Not set</dd></div></dl>
+        <dl class="detail-list"><div><dt>In-Person Ask</dt><dd class="muted">Not set</dd></div><div><dt>Online Ask</dt><dd class="muted">Not set</dd></div></dl>
+      </div></div>
+      <div class="notes"><h3>Notes</h3><p>Pronoun badge ribbon for convention and community-event distribution. Stored in packs of 100; inventory is counted as individual ribbons.</p></div>
+    </section>
+  </div>
+
+  <section class="related-stock" aria-label="Active events and pending movements">
+    <div class="related-grid">
+      <div><h3>Active events</h3><strong class="related-quantity">300</strong><p>Gamehole Con</p><a class="text-action" href="../event-reconciliation/index.html">View event example ↗</a></div>
+      <div><h3>In Transit</h3><strong class="related-quantity">200</strong><p>Central → Ames IA</p><a class="text-action" href="../relocation-requests/index.html">View relocation example ↗</a></div>
+      <div><h3>Ordered</h3><strong class="related-quantity">1,500</strong><p>Expected at Central</p><a class="text-action" href="../purchase-requests/index.html">View purchase example ↗</a></div>
+    </div>
+    <p class="helper">Separate from Available; managed through their events, relocations, and purchases.</p>
+  </section>
+
+  <section id="item-history" class="history" aria-labelledby="history-title">
+    <div class="section-heading"><h2 id="history-title">History</h2><span>Newest first · Read-only</span></div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Item history">
+      <table>
+        <thead><tr><th scope="col">Date</th><th scope="col">Description</th><th scope="col" class="number">Quantity</th><th scope="col" class="number">Unit Cost</th></tr></thead>
+        <tbody>
+          <tr><td>26 Sep 2026</td><td>Purchase Ordered: MARCO Promotional to Central</td><td class="number">[1,500]</td><td class="number">$0.160</td></tr>
+          <tr class="adjustment-history-row" data-adjustment-url="adjustment.html?batch=sample-indianapolis"><td>25 Sep 2026</td><td><a href="adjustment.html?batch=sample-indianapolis">Adjustment: Indianapolis IN</a></td><td class="number">+50</td><td class="number">$0.160</td></tr>
+          <tr><td>24 Sep 2026</td><td>Relocation Shipped: Central to In Transit</td><td class="number">±200</td><td class="number">$0.160</td></tr>
+          <tr><td>23 Sep 2026</td><td>Relocation: Central to Gamehole Con</td><td class="number">±300</td><td class="number">$0.160</td></tr>
+          <tr><td>21 Sep 2026</td><td>Relocation Received: In Transit to Indianapolis IN</td><td class="number">±500</td><td class="number">$0.160</td></tr>
+          <tr><td>20 Sep 2026</td><td>Relocation Shipped: Central to In Transit</td><td class="number">±500</td><td class="number">$0.160</td></tr>
+          <tr><td>18 Sep 2026</td><td>Purchase Received: MARCO Promotional to Central</td><td class="number">+1,000</td><td class="number">$0.160</td></tr>
+          <tr><td>10 Sep 2026</td><td>Purchase Ordered: MARCO Promotional to Central</td><td class="number">[1,000]</td><td class="number">n/a</td></tr>
+          <tr class="adjustment-history-row" data-adjustment-url="adjustment.html?batch=sample-starting"><td>01 Sep 2026</td><td><a href="adjustment.html?batch=sample-starting">Adjustment: Central</a></td><td class="number">+2,000</td><td class="number">n/a</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+</body>
+</html>
+

@@ -1,0 +1,126 @@
+<style>
+#tg-purchase { --paper: light-dark(#ffffff,#222326); --ink: light-dark(#25232b,#eeeaf3); --soft: light-dark(#f5f3f7,#2c2b31); --line: light-dark(#ded9e4,#4a4651); --quiet: light-dark(#655d70,#bdb4c9); --brand: light-dark(#56367d,#c7a6ef); --onbrand: light-dark(#ffffff,#28123d); color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:12px; font:14px/1.5 system-ui,sans-serif; overflow:hidden; }
+#tg-purchase * { box-sizing:border-box; }
+#tg-purchase header { padding:18px 22px; background:var(--soft); display:flex; justify-content:space-between; align-items:center; gap:12px; }
+#tg-purchase h2 { font-size:20px; font-weight:500; margin:0; }
+#tg-purchase h3 { font-size:15px; font-weight:500; margin:0 0 12px; }
+#tg-purchase .tag { color:var(--quiet); font-size:12px; }
+#tg-purchase section { padding:18px 22px; border-top:1px solid var(--line); }
+#tg-purchase label { display:block; font-size:12px; color:var(--quiet); }
+#tg-purchase input { display:block; width:100%; min-width:0; padding:9px 10px; margin-top:5px; background:var(--paper); color:var(--ink); border:1px solid var(--line); border-radius:6px; font:inherit; font-size:14px; }
+#tg-purchase input[type=number] { font-variant-numeric:tabular-nums; }
+#tg-purchase select { width:100%; min-width:0; background:var(--paper); color:var(--ink); border:1px solid var(--line); border-radius:4px; padding:5px; font:inherit; }
+#tg-purchase .metadata { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+#tg-purchase .widefield { grid-column:1 / -1; }
+#tg-purchase .entry-row { display:grid; grid-template-columns:minmax(140px,2fr) minmax(65px,.8fr) minmax(75px,.9fr) minmax(80px,1fr); gap:10px; align-items:end; margin:12px 0; }
+#tg-purchase output { display:block; padding:9px 0; font-variant-numeric:tabular-nums; text-align:right; }
+#tg-purchase .charges { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+#tg-purchase .total { display:flex; justify-content:space-between; align-items:center; margin-top:16px; font-size:18px; font-weight:500; }
+#tg-purchase .rule { margin:12px 0 0; color:var(--quiet); font-size:12px; }
+#tg-purchase .rowhead { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+#tg-purchase button { border:1px solid var(--line); background:var(--paper); color:var(--ink); border-radius:6px; font:inherit; padding:9px 14px; }
+#tg-purchase button.primary { background:var(--brand); color:var(--onbrand); border-color:var(--brand); }
+#tg-purchase footer { padding:16px 22px; display:flex; justify-content:space-between; gap:14px; align-items:center; border-top:1px solid var(--line); }
+#tg-purchase table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
+#tg-purchase th { font-weight:500; color:var(--quiet); font-size:12px; }
+#tg-purchase td,#tg-purchase th { text-align:right; padding:10px 4px; border-bottom:1px solid var(--line); }
+#tg-purchase th:first-child,#tg-purchase td:first-child { text-align:left; }
+#tg-purchase [hidden] { display:none !important; }
+#tg-purchase .error { color:light-dark(#a62626,#ffb4b4); }
+#tg-purchase.compact section { padding-top:12px; padding-bottom:12px; }
+@media(max-width:520px) { #tg-purchase .metadata { grid-template-columns:1fr; } #tg-purchase .entry-row { grid-template-columns:1fr 1fr; padding-bottom:12px; border-bottom:1px solid var(--line); } #tg-purchase .charges { grid-template-columns:1fr; gap:9px; } #tg-purchase section,#tg-purchase header,#tg-purchase footer { padding-left:14px; padding-right:14px; } #tg-purchase input { font-size:16px; } #tg-purchase footer { flex-wrap:wrap; } }
+</style>
+<div id="tg-purchase" aria-label="Purchase cost entry mockup">
+  <header><h2>New purchase</h2><span class="tag">Draft · Design proposal</span></header>
+  <div data-entry>
+    <section>
+      <div class="metadata">
+        <label class="widefield">Purchase name<input data-meta="name" value="Wristband resupply"></label>
+        <label>Manufacturer<input data-meta="manufacturer" placeholder="Find a manufacturer"></label>
+        <label>Receiving location<input data-meta="location" placeholder="Choose a location"></label>
+      </div>
+    </section>
+    <section>
+      <h3>Items on the invoice</h3>
+      <div data-rows></div>
+      <div class="rowhead"><span class="tag">Debossed color filled wristbands</span><span>Merchandise <strong data-subtotal></strong></span></div>
+    </section>
+    <section>
+      <h3>Order charges</h3>
+      <div class="charges">
+        <label>Discount ($)<input data-charge="discount" type="number" min="0" step="0.01" value="236.25"></label>
+        <label>Tax ($)<input data-charge="tax" type="number" min="0" step="0.01" value="88.46"></label>
+        <label>Shipping &amp; handling ($)<input data-charge="shipping" type="number" min="0" step="0.01" value="124.16"></label>
+      </div>
+      <div class="total"><span>Calculated order total</span><span data-total aria-live="polite"></span></div>
+      <div data-error class="error" role="alert" hidden></div>
+    </section>
+  </div>
+  <section data-review hidden>
+    <h3>Review item costs</h3>
+    <table><thead><tr><th>Item</th><th>Tax share</th><th>Order cost</th><th>Cost each</th></tr></thead><tbody data-results></tbody></table>
+    <div class="total"><span>Order total</span><span data-review-total></span></div>
+    <p class="rule">Discount by merchandise value · Tax by discounted merchandise value · Shipping by quantity</p>
+  </section>
+  <footer><span class="tag" data-footer>Enter invoice amounts; costs are calculated.</span><button class="primary cursor-interaction" type="button" data-review-button>Review item costs</button><button class="cursor-interaction" type="button" data-back hidden>Back to entry</button></footer>
+</div>
+<script>
+(() => {
+ const root=document.getElementById('tg-purchase');
+ const defaults={items:[{name:'GAYMER wristband',qty:5200,amount:900,mode:'total'},{name:'ALLY wristband',qty:3100,amount:600,mode:'total'}],discount:236.25,tax:88.46,shipping:124.16,meta:{name:'Wristband resupply',manufacturer:'',location:''}};
+ let state=JSON.parse(JSON.stringify(defaults));
+ const design={compact:false};
+ const money=n=>n.toLocaleString('en-US',{style:'currency',currency:'USD'});
+ const rows=root.querySelector('[data-rows]');
+ const reviewButton=root.querySelector('[data-review-button]');
+ function renderRows(){
+  rows.replaceChildren();
+  state.items.forEach((item,i)=>{
+   const row=document.createElement('div');row.className='entry-row';
+   const fields=[['Catalog item','name','text',item.name],['Quantity','qty','number',item.qty],['Price entry','amount','number',item.amount]];
+   fields.forEach(([labelText,key,type,val])=>{const label=document.createElement('label');label.textContent=labelText;if(key==='amount'){const select=document.createElement('select');select.setAttribute('aria-label',item.name+' price entry method');select.dataset.mode=i;[['total','Line total ($)'],['unit','Unit price ($)']].forEach(([value,text])=>{const option=document.createElement('option');option.value=value;option.textContent=text;select.append(option);});select.value=item.mode;label.append(select);}const input=document.createElement('input');input.type=type;input.value=val;input.dataset.index=i;input.dataset.field=key;if(type==='number'){input.min=key==='qty'?'1':'0';input.step=key==='qty'?'1':item.mode==='unit'?'any':'0.01';}label.append(input);row.append(label);});
+   const label=document.createElement('label');label.textContent=item.mode==='unit'?'Line total (calculated)':'Unit price (calculated)';const out=document.createElement('output');out.dataset.line=i;label.append(out);row.append(label);rows.append(row);
+  });
+ }
+ function allocate(amount,weights){
+  const cents=Math.round(amount*100),sum=weights.reduce((s,w)=>s+w,0);
+  if(cents===0||sum<=0||!Number.isFinite(cents))return weights.map(()=>0);
+  const exact=weights.map(w=>cents*w/sum),parts=exact.map(Math.floor);
+  const order=exact.map((v,i)=>({i,f:v-parts[i]})).sort((a,b)=>b.f-a.f||a.i-b.i);
+  const remainder=cents-parts.reduce((s,n)=>s+n,0);
+  for(let n=0;n<remainder;n++)parts[order[n%order.length].i]++;
+  return parts.map(n=>n/100);
+ }
+ function calculate(){
+  const merchandise=state.items.map(i=>Math.round((i.mode==='total'?i.amount:i.qty*i.amount)*100)/100);
+  const subtotal=merchandise.reduce((s,n)=>s+n,0),qty=state.items.reduce((s,i)=>s+i.qty,0);
+  const discount=allocate(state.discount,merchandise),net=merchandise.map((m,i)=>m-discount[i]);
+  const tax=allocate(state.tax,net),shipping=allocate(state.shipping,state.items.map(i=>i.qty));
+  return {subtotal,qty,net,tax,costs:net.map((n,i)=>n+tax[i]+shipping[i]),total:subtotal-state.discount+state.tax+state.shipping};
+ }
+ function render(){
+  root.classList.toggle('compact',design.compact);
+  const c=calculate();
+  root.querySelector('[data-subtotal]').textContent=money(c.subtotal);
+  root.querySelector('[data-total]').textContent=money(c.total);
+  root.querySelector('[data-review-total]').textContent=money(c.total);
+  root.querySelectorAll('[data-line]').forEach(el=>{const item=state.items[+el.dataset.line];el.textContent=item.mode==='unit'?money(item.qty*item.amount):item.qty>0?'$'+(item.amount/item.qty).toFixed(6):'—';});
+  const taxBaseValid=state.tax===0||c.subtotal>state.discount;
+  const valid=state.items.every(i=>Number.isInteger(i.qty)&&i.qty>0&&i.amount>=0)&&state.discount>=0&&state.discount<=c.subtotal&&state.shipping>=0&&state.tax>=0&&taxBaseValid;
+  const err=root.querySelector('[data-error]');err.hidden=valid;err.textContent=valid?'':!taxBaseValid?'Tax allocation needs a positive merchandise total after discount.':'Use positive whole quantities, nonnegative costs, and a discount no larger than merchandise.';
+  reviewButton.disabled=!valid;
+  const body=root.querySelector('[data-results]');body.replaceChildren();
+  state.items.forEach((item,i)=>{const tr=document.createElement('tr');[item.name,money(c.tax[i]),money(c.costs[i]),'$'+(c.costs[i]/item.qty).toFixed(6)].forEach(text=>{const td=document.createElement('td');td.textContent=text;tr.append(td);});body.append(tr);});
+ }
+ function save(){if(window.openai?.setWidgetState) window.openai.setWidgetState({modelContent:{wristbandCostExample:state},privateContent:{design,review:!root.querySelector('[data-review]').hidden}}).catch(()=>{});}
+ function showReview(on){root.querySelector('[data-entry]').hidden=on;root.querySelector('[data-review]').hidden=!on;reviewButton.hidden=on;root.querySelector('[data-back]').hidden=!on;root.querySelector('[data-footer]').textContent=on?'This order only · Existing stock not included':'Enter invoice amounts; costs are calculated.';}
+ function restore(snapshot){const data=snapshot?.modelContent?.wristbandCostExample;if(data&&Array.isArray(data.items)&&data.items.length===2&&data.items.every(i=>typeof i.name==='string'&&Number.isFinite(i.qty)&&Number.isFinite(i.amount)&&['total','unit'].includes(i.mode))&&['discount','tax','shipping'].every(k=>Number.isFinite(data[k]))){state=JSON.parse(JSON.stringify(data));}const d=snapshot?.privateContent?.design;if(d)design.compact=!!d.compact;renderRows();root.querySelectorAll('[data-charge]').forEach(el=>el.value=state[el.dataset.charge]);root.querySelectorAll('[data-meta]').forEach(el=>el.value=state.meta?.[el.dataset.meta]||'');render();showReview(!!snapshot?.privateContent?.review);}
+ function changeMode(item,mode){if(mode===item.mode)return;item.amount=mode==='unit'?(item.qty>0?item.amount/item.qty:0):Math.round(item.amount*item.qty*100)/100;item.mode=mode;}
+ root.addEventListener('input',event=>{const el=event.target;if(el.dataset.mode!==undefined)return;if(el.dataset.field){const item=state.items[+el.dataset.index];item[el.dataset.field]=el.dataset.field==='name'?el.value:+el.value;}else if(el.dataset.charge)state[el.dataset.charge]=+el.value;else if(el.dataset.meta){state.meta=state.meta||{};state.meta[el.dataset.meta]=el.value;}render();save();});
+ root.addEventListener('change',event=>{const el=event.target;if(el.dataset.mode===undefined)return;const index=+el.dataset.mode;changeMode(state.items[index],el.value);renderRows();render();root.querySelector('[data-mode="'+index+'"]').focus();save();});
+ reviewButton.addEventListener('click',()=>{showReview(true);save();});root.querySelector('[data-back]').addEventListener('click',()=>{showReview(false);save();});
+ restore(window.openai?.widgetState);
+ window.addEventListener('openai:set_globals',event=>{if(event.detail?.globals?.widgetState)restore(event.detail.globals.widgetState);});
+ if(globalThis.Tweak){const tweak=new Tweak({container:root,onChange:()=>{render();save();}});tweak.addToggle(design,'compact',{label:'Compact spacing'});}
+})();
+</script>
