@@ -925,6 +925,7 @@ Date: 2026-09-28. Origin: User decision.
 - Use Git with `main` and an `origin` remote pointing to that repository. Include standard ignore patterns even for files/directories not yet present.
 - Keep `_private/` and its `shh.txt` test out of Git. Keep any future secrets or PII in the root `_secrets/` folder, also excluded from Git; never force-add or copy that content into tracked material.
 - The user confirmed the current project contains no secrets or PII and authorized the initial push. This does not authorize application implementation.
+- 2026-09-28 follow-up: a request to prepare for a handoff includes authorization to commit and push all Git-eligible project changes after completing the other updates, handoff note, and directions. Honor all ignore rules and verify synchronization; report any blocker or remaining unpushed work.
 
 ## Proposals under discussion
 

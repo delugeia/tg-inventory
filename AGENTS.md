@@ -26,6 +26,7 @@ For a task transition, read the handoff linked from current status, or a specifi
 - When preparing a handoff, include the objective and scope, confirmed decisions and constraints, completed work, relevant file links, open questions or blockers, and the next concrete steps. Clearly label proposals and unverified assumptions.
 - Keep handoffs concise and task-specific; link to source documents instead of copying them or reproducing the conversation.
 - Update current status with a link to the relevant handoff when transitioning. Handoffs are dated transition records; `status/Current Status.md` remains the current project summary.
+- When the user asks to prepare for a handoff, finish all project/status updates and create the handoff note and directions first. Then **commit and push everything** as the final handoff step: include all new files, edits, and deletions eligible for Git, honor `.gitignore` (especially `_private/` and `_secrets/`), and push to the configured GitHub remote. The handoff request authorizes this step. Verify the local branch and remote are synced; if blocked, report the blocker and any uncommitted or unpushed work rather than claiming the handoff is fully synced.
 
 ## Working rules
 

@@ -126,3 +126,11 @@ Catalog verification: Chrome covered creation, Collection edit/inactive/archive/
 
 The root `.gitignore` excludes `_private/` (including the local `shh.txt` test), `_secrets/`, environment/credential files, dependencies, generated runtime/build output, and editor/OS files. All future secrets or PII must stay in `_secrets/` and must never be copied into tracked material. README and AGENTS.md record this ongoing rule. No application implementation is authorized.
 
+Handoff convention (D-118 follow-up): when the user requests handoff preparation, finish all updates and the handoff directions, then commit and push all Git-eligible changes as the final step, honoring `.gitignore` and verifying the local/remote branches are synced.
+
+## Live mockups and Forge deployment
+
+2026-09-28 UTC: [Live walkthrough](https://tg-inventory.delugeia.com/) verified over HTTPS. Forge site `3401224` on `delugeia01` uses Custom Git (`delugeia/tg-inventory`, `main`), a site-specific read-only GitHub deploy key, isolated user `tginventory`, and `/public` as its web directory. The user enabled redirects from `www`; both hostnames resolve to server IP `135.233.112.7`. Let's Encrypt was installed through Forge. The user submitted all setup forms.
+
+GitHub push-only JSON webhook `687000598` is active with SSL verification enabled. Its initial ping received HTTP 200 from Forge. **Remaining: verify a real push to `main` produces a successful Forge deployment.** The user authorized committing and pushing all Git-eligible changes, including the handoff rule, hosting documentation, and setup screenshots. Deployment URLs containing tokens and their screenshots belong only in ignored `_secrets/`; never include them in tracked files.
+
