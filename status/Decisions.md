@@ -289,6 +289,8 @@ This resolves Q-005's choice of averaging method. It does not settle included st
 
 ### D-042 — Allocate tax by cost and shipping by quantity
 
+Shipping selection/default superseded by D-123; retain this historical decision for context.
+
 Date: 2026-09-23. Authority: User agreement with the preceding allocation proposal.
 
 Allocate the entered invoice tax among purchase items in proportion to their merchandise cost after discount. Allocate shipping/handling by item quantity. Include these shares in each item's received purchase cost before applying D-041. Enter actual invoice tax; no tax-rate calculation is required by this decision. Mixed tax eligibility and explicit item-specific invoice charges remain details to resolve in Q-006. General discount and rounding rules are not independently approved by this agreement.
@@ -934,6 +936,39 @@ Date: 2026-09-28. Origin: User decision.
 - Open the walkthrough on a brief project introduction instead of Users. Clicking the TG Inventory brand returns to it; no additional navigation entry is needed.
 - Clearly state that everything shown is a mockup, there is no live data, and edits in one independent mockup do not update the others, with Catalog versus Inventory as an example.
 - Preserve direct workflow links and visited mockup state. This is a mockup presentation change, not application implementation or specification approval.
+
+### D-120 — Keep source data local-only
+
+Date: 2026-09-28. Origin: User decision.
+
+- Ignore root `_data/` and remove it from the current public GitHub tree while retaining local files. The user explicitly does not require removing prior data from Git history.
+- Completed in commit `4fc6fe1`. Source/data links require a local copy. Preserve the existing `_private/` and `_secrets/` exclusions.
+
+### D-121 — Legacy spreadsheet review and draft import package
+
+Date: 2026-09-28. Origin: User direction; [saved prompt](../_prompts/2026-09-28-data-import-draft.md).
+
+- Review all three workbooks in `_data/current-inventory/`: main inventory, shipping materials and donated games. Prepare questions, labeled suggestions for model/mockup/specification changes, and headered CSVs with a README under `_data/data-for-import/` for future testing and production preparation.
+- Prefer reasonably normalized import structure and preserve as much source information as possible. No application development is authorized. Proposed mappings and import policies require review; this direction does not approve them.
+- For shipping research, inspect only a few ULINE order/product entries and do not browse other shipping-material websites. This is limited research, not an account-wide crawl or purchase authorization.
+- The user describes games as manufacturer donations and uses their MSRP for insurance and IRS value. Retain that source meaning separately from Unit Cost; no historical gift dates, acquisition quantities or locations were supplied.
+- Proceed without questions while the user is away, recording uncertainties for return. Begin at 81% remaining usage, work in completed phases and stop above a 20% remaining floor. Fast mode was turned off by the user before resumption to reduce usage.
+
+### D-122 — Enter supplier prices per individual item
+
+Date: 2026-09-28. Origin: User decision after reviewing ULINE order 9758475.
+
+- Record the purchase unit price per individual item, even when the supplier's printed Unit Price is quoted per hundred. For S-967, 100 mailers at $92 per hundred means a database purchase unit price of $0.92 and a $92 line amount.
+- The person entering the purchase understands the supplier's pricing basis and enters the normalized amount. No mockup or process change is needed; do not introduce pricing-denominator controls or a new conversion workflow for this case.
+- Source/import evidence may retain the original quoted price and unit for traceability. This does not require new operational database fields or change the existing receipt-cost allocation/averaging rules.
+
+### D-123 — Choose shipping allocation; default to discounted merchandise value
+
+Confirmed 2026-09-28. The purchase form offers **By line total** (default for new purchases) and **By quantity**, saved per purchase. Line-total shipping weights include discounts but exclude item fees, Other Fees, tax and shipping itself. Quantity uses individual units, including bonus units. This supersedes the shipping-by-quantity-only rule in D-042/D-047; fee, discount, tax and receipt rules otherwise remain unchanged. Each allocation reconciles exactly to the entered shipping amount using D-051.
+
+Draft implementation detail: because order discounts already apply to merchandise plus fees, use the merchandise fraction of each discounted line base as its shipping weight: `Cost × (base − allocated Discount) / base`, or zero when base is zero. This excludes the discounted fee component without deducting a fee-related discount twice. Item-specific discounts are already in Cost. **Agent Suggestion:** when positive shipping has no positive merchandise weight, require choosing quantity or correcting amounts; do not silently change methods. These exceptional-case details remain subject to review.
+
+The choice follows existing order-edit/receipt permissions and becomes read-only on finalization. Existing browser samples lacking a choice retain quantity allocation so their saved receipt costs do not change. This is mockup compatibility, not approval of a production migration policy.
 
 ## Proposals under discussion
 

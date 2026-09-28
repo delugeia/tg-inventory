@@ -1,8 +1,8 @@
 # Purchase entry and receiving
 
-State: Draft. Updated: 2026-09-25.
+State: Draft. Updated: 2026-09-28.
 
-This is the developer-facing behavioral specification for the [purchase mockup](../public/purchase-entry/index.html). It is intended to be usable without reading or reusing its HTML, CSS, or JavaScript. The presentation and interactions have been reviewed with the user; the assembled specification has not been formally approved. Confirmed requirements are grounded in [D-040–D-075](../status/Decisions.md). Demo-only behavior and remaining proposals are identified below. Current decisions take precedence over historical proposals.
+This is the developer-facing behavioral specification for the [purchase mockup](../public/purchase-entry/index.html). It is intended to be usable without reading or reusing its HTML, CSS, or JavaScript. The presentation and interactions have been reviewed with the user; the assembled specification has not been formally approved. Confirmed requirements are grounded in D-123 and [D-040–D-075](../status/Decisions.md). Demo-only behavior and remaining proposals are identified below. Current decisions take precedence over historical proposals.
 
 ## Users and state
 
@@ -58,7 +58,9 @@ Apply these steps in order:
 2. For each line, allocation base = Cost + Fee + its Other Fees share.
 3. Allocate the order-wide Discount proportionally to those bases. Subtract the allocated discount to obtain each discounted base.
 4. Allocate Tax proportionally to discounted bases, including fees. No per-line tax-exemption controls are required.
-5. Allocate Shipping proportionally to QTY.
+5. Allocate Shipping using the purchase's saved **Shipping allocation** choice (D-123): **By line total** defaults for new purchases and weights discounted merchandise only, excluding all fees; **By quantity** weights QTY including bonus units. Tax and shipping do not enter either weight. Save the choice with order details, recalculate when it changes, show it in review, and lock it with the finalized receipt.
+
+   Draft implementation: line-total weight = `Cost × discounted base / allocation base`, or zero for a zero base. This keeps only the merchandise portion after the already-allocated discount; the fee portion and its discount are excluded. Item-specific discounts are already reflected in Cost. **Agent Suggestion:** positive shipping with no positive merchandise weight produces a validation message asking for quantity allocation or corrected amounts. Zero shipping needs no positive weight. Never silently switch allocation methods.
 6. Final line acquisition cost = discounted base + allocated Tax + allocated Shipping. Purchase cost per unit = final line acquisition cost ÷ QTY.
 
 For proportional allocations, compute exact shares in cents, take whole cents, and assign remaining cents in descending fractional-remainder order. Break ties by line order. The same method applied to equal weights gives the first lines any leftover Other Fees cents. Recalculate allocations when rows, quantities, or charges change (D-042/D-044–D-054/D-073).
@@ -130,7 +132,7 @@ Agent Suggestions for implementation: use decimal-safe money arithmetic and auth
 | Refresh the original 900/5,200 row | Cost stays 900.00; shortened displayed Unit does not introduce drift. |
 | Internal Unit 900/5,200, Cost 900 | Saving passes. Internal Unit 0.20, QTY 5,200, Cost 900 fails with the affected row identified. |
 | Other Fees 10.01 across two lines | Shares are 5.01 and 5.00 in line order, before discount and tax. |
-| Wristbands: QTY 5,200/3,100; Cost 900/600; fees zero; Discount 236.25; Tax 88.46; Shipping 124.16 | Allocated acquisition costs are 889.12 and 587.25, total 1,476.37. With Shipping zero: 811.33 and 540.88, total 1,352.21. |
+| Wristbands: QTY 5,200/3,100; Cost 900/600; fees zero; Discount 236.25; Tax 88.46; Shipping 124.16 | Default line-total allocation gives acquisition costs 885.83 and 590.54. Selecting quantity gives 889.12 and 587.25. Both total 1,476.37. With Shipping zero: 811.33 and 540.88, total 1,352.21. |
 | Save/edit an order or add Shipped date | Ordered quantities reflect saved lines; held stock and current catalog costs are unchanged. |
 | Review receipt, go Back, or Cancel receiving | No receipt stock/cost posting; Back retains receipt edits, Cancel receiving returns to saved order. |
 | Confirm receipt twice/retry | Actual receipt is applied once; purchase becomes read-only and pending quantity clears. |

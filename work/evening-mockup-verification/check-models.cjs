@@ -5,7 +5,7 @@ const purchase=context();
 vm.runInNewContext(fs.readFileSync('public/purchase-requests/costing.js','utf8')+'\n'+fs.readFileSync('public/purchase-requests/mockup.js','utf8').replace('});index();','});')+`
 state=seed();persona='procurement';
 const r=state.requests.find(r=>r.id==='PR-203'),stockBefore=JSON.stringify(state.stock);
-const cost=calculate(r.order);assert.equal(cost.total,147637);assert.equal(cost.totals[0],88912);assert.equal(cost.totals[1],58725);
+const cost=calculate(r.order);assert.equal(cost.total,147637);assert.equal(cost.totals[0],88583);assert.equal(cost.totals[1],59054);
 transition(r,'Ordered');assert.equal(r.history.length,2);transition(r,'Shipped');assert.equal(r.history.length,2);
 transition(r,'Ordered');assert.equal(r.history.length,2);transition(r,'Request');assert.equal(r.history.length,4);
 assert.equal(r.history[0].qty,'[- 3,100]');assert.equal(r.history[1].qty,'[- 5,200]');

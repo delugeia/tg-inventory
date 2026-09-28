@@ -29,7 +29,11 @@ function calculate(order) {
   const net=base.map((n,i)=>n-discount[i]);
   if(order.tax>0 && !net.some(n=>n>0)) return {errors:['Tax needs a positive discounted cost to allocate against.']};
   const tax=allocate(Math.round(order.tax*100),net);
-  const shipping=allocate(Math.round(order.shipping*100),order.items.map(i=>i.qty));
+  const method=order.shippingAllocation ?? 'quantity'; // Preserve older saved examples.
+  if(!['line_total','quantity'].includes(method)) return {errors:['Choose a shipping allocation method.']};
+  const weights=method==='quantity' ? order.items.map(i=>i.qty) : merch.map((n,i)=>base[i]>0 ? n*net[i]/base[i] : 0);
+  if(order.shipping>0 && !weights.some(n=>n>0)) return {errors:['Shipping needs positive discounted merchandise value. Choose By quantity or correct the amounts.']};
+  const shipping=allocate(Math.round(order.shipping*100),weights);
   const totals=net.map((n,i)=>n+tax[i]+shipping[i]);
   return {errors:[],merch,fees,other,discount,tax,shipping,totals,total:totals.reduce((a,b)=>a+b,0)};
 }

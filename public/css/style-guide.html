@@ -139,6 +139,11 @@
     <div class="scroll"><table><thead><tr><th>Collection</th><th>Category</th><th>SKU prefix</th><th>Items</th><th>Status</th></tr></thead><tbody><tr><td>Pronouns</td><td>Ribbons</td><td>RP_</td><td>0</td><td><span class="badge" data-state="active">Active</span></td></tr></tbody></table></div>
     <p>Inactive and Archived badges use the neutral treatment. Keep lifecycle actions with the selected record; changing a parent status does not demonstrate a child cascade in this draft.</p>
   </section>
+  <section id="shipping-allocation">
+    <h2>Purchase shipping allocation</h2>
+    <div class="grid"><label>Shipping allocation<select><option>By line total</option><option>By quantity</option></select></label><label>Finalized purchase<select disabled><option>By line total</option></select></label></div>
+    <p class="hint">By line total uses discounted merchandise, excluding fees.</p>
+  </section>
   <section id="maintenance">
     <h2>Developer and designer maintenance</h2>
     <p><strong>Single stylesheet:</strong> every page links directly to <code>public/css/style.css</code>. There are no per-mockup theme stylesheets or inline styles. Keep new theme values in tokens and new reusable patterns in the shared components section. The scoped layout section holds genuine workflow geometry only.</p>

@@ -1,14 +1,31 @@
 # Current status
 
-Last updated: 2026-09-28 UTC — `_data/` made local-only.
+Last updated: 2026-09-28 UTC — shipping allocation choice confirmed and mockups updated (D-123).
 
 The user requested ignoring root `_data/` and removing its tracked files from the current GitHub tree while retaining prior history; existing local files are preserved. `.gitignore`, README and agent guidance now record this convention. Sample-source links require a local copy. This chat's pre-update status snapshot is `status/_archive/2026-09-28-100209Z/`.
 
 ## Stage and next activity
 
-Requirements planning. All nine mockups and the subsequent refinements are complete as drafts, including Catalog. Public GitHub/Forge hosting and the walkthrough introduction are configured. **Next: user review of the mockups**, starting with whichever functionality they choose. No application implementation. All new specifications and mockups are Draft; confirmed individual requirements do not approve an assembled specification.
+Requirements planning. **Next direction is open:** the user has not chosen the next task. Read the handoff, then wait for their planning instruction; do not automatically resume the import review or start application development. All nine mockups remain Drafts, and individual decisions do not approve assembled specifications.
 
-[Current handoff](../handoff/2026-09-28-091934Z-handoff.md) · [Mockup index](../public/README.md) · [Style guide](../public/css/style-guide.html) · [Decisions](Decisions.md) through D-119 · [Open Questions](Open%20Questions.md) · [Future Ideas](Future%20Ideas.md).
+## Purchase shipping allocation
+
+D-123 confirms a per-purchase shipping selector: default By line total, using discounted merchandise excluding fees, or By quantity. Both purchase mockups and the costing specification reflect it. Tax/discount/fee rules remain unchanged. Existing saved samples retain quantity allocation; new examples use line total. The proportional discount-component interpretation and zero-value validation are labeled draft details in D-123. Verified both models with fee/discount/zero-value cases and 200 cent-reconciliation cases each; existing lifecycle checks pass. Chrome checks confirmed both selectors, recalculation, save/reload persistence and the visible allocation summary. Shared style guide updated. No application implementation is authorized.
+
+## Legacy data review completed
+
+- User-requested [ULINE order JSON](../_data/uline-orders/uline-orders.json) now contains all eight supplied PDF confirmations, sorted by Order Date: 21 line items, sold/ship-to addresses, customer/order numbers, shipping method/payment terms and separate order charges. Per-hundred mailer quotes normalize to $0.64/$0.92 each; tax/shipping are not allocated to prices. Only Order Date is captured; PO, shipment counts, phone and delivery estimates are omitted. All line/subtotal/order arithmetic reconciles ($1,141.11 combined total). PDFs were visually reviewed and unchanged. This local-only extraction does not modify the earlier import package or application workflows.
+
+- D-122: enter/store purchase prices per individual item. ULINE S-967 quoted at $92 per hundred is $0.92 each. The person entering the purchase handles this; no mockup or process change, pricing-denominator controls or new conversion workflow. Original units may remain in import evidence. Receipt costing rules are unchanged.
+
+- [Draft findings and suggested design changes](../_specifications/Data%20Import%20and%20Legacy%20Data%20Review.md); [local CSV package/README](../_data/data-for-import/README.md); question queue Q-021/Q-043–Q-046 plus existing catalog/valuation questions. D-120 records local-only `_data/`; D-121 records this review's scope and the user's described game MSRP use.
+- Reviewed all 17 sheets from three unchanged workbooks and a limited ULINE-only sample: two recent orders, three product pages. Prepared 31 CSVs, a manifest/schema, verification and usage notes: 193 distinct item candidates, 326 historical opening candidates and 104 historical purchase lines. All 9,904 populated source cells are retained with provenance; supplemental web rows are identified separately.
+- Important unresolved findings: duplicate catalog/location rows; 172 Indianapolis units skipped by first-match lookups; repeated summary stock; missing shipping/game locations; 82 default-zero cost rows without purchase evidence; incomplete history and price-unit/dimension discrepancies. Candidate opening quantities are test-only and not approved for production. Historical purchases and external listings have no stock effect.
+- Builder checks: 539 passed. Independent package checks: 400 passed, including source hashes, complete cell coverage, relationships, eligibility exclusions and identical hashes across a repeated extraction of all 31 CSVs. No source workbook was resaved/recalculated; no production importer exists. Source notes/identities are not new application users or public fixtures. Restricted derivative text remains only in `_secrets/`.
+- All recommendations remain **Agent Suggestions/Ideas**. Final mappings, counts, cost policy, import authority and any application changes await the user. Usage checkpoints: 81% start, 80% after initial audit, 79% during extraction, **78% at completion**; floor 20%. No need to spend the available allowance once the scoped deliverables are complete.
+- Handoff requested: documentation and directions are prepared; commit/push is the final packaging step, with synchronization reported in the closing response. This chat already snapshotted status once at `status/_archive/2026-09-28-100209Z/` before its first status change.
+
+[Current handoff](../handoff/2026-09-28-225139Z-handoff.md) · [Mockup index](../public/README.md) · [Style guide](../public/css/style-guide.html) · [Decisions](Decisions.md) through D-123 · [Open Questions](Open%20Questions.md) · [Future Ideas](Future%20Ideas.md).
 
 ## Completed stages
 

@@ -43,3 +43,6 @@ Mockup guardrails for Mark Ordered/receipt are Agent Suggestions carried from th
 - Owner cannot cancel a submitted Request; Procurement can cancel Request/Ordered/Shipped but not Received. Owner may cancel their own Draft.
 - Confirm receipt applies final quantities/cost once and makes details read-only; reload/view cannot post again. Notes remain available for all authenticated users.
 - Every status transition displays the actor/time; no state control rewrites old log records.
+
+
+D-123 (2026-09-28): Shipping allocation is saved per purchase: By line total (new-purchase default, discounted merchandise excluding fees) or By quantity. Tax remains based on discounted cost including fees. See the purchase costing specification for discount-component and zero-value handling. Existing local samples without a saved choice retain quantity allocation; finalized receipts remain read-only.

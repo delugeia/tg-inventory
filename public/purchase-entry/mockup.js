@@ -9,7 +9,7 @@ const catalog = value => value === 0 ? 'n/a' : '$' + value.toFixed(3);
 const number = value => value.toLocaleString('en-US');
 let data, draft, screen;
 function sample() {
-  return {status:'Draft', order:{name:'Wristband resupply',manufacturer:'Example wristband vendor',location:'Central',ordered:today(),shipped:'',received:'',discount:236.25,tax:88.46,shipping:124.16,other:0,items:[
+  return {status:'Draft', order:{name:'Wristband resupply',manufacturer:'Example wristband vendor',location:'Central',ordered:today(),shipped:'',received:'',discount:236.25,tax:88.46,shipping:124.16,shippingAllocation:'line_total',other:0,items:[
     {id:'gaymer',name:'GAYMER wristband',qty:5200,mode:'total',amount:900,unitPrice:900/5200,cost:900,fee:0},
     {id:'ally',name:'ALLY wristband',qty:3100,mode:'total',amount:600,unitPrice:600/3100,cost:600,fee:0}
   ]},stock:{gaymer:{name:'GAYMER wristband',qty:1000,cost:0.2},ally:{name:'ALLY wristband',qty:500,cost:0}},notes:[],postedAt:null};
@@ -44,7 +44,11 @@ function calculate(order) {
   const net=base.map((n,i)=>n-discount[i]);
   if(order.tax>0 && !net.some(n=>n>0)) return {errors:['Tax needs a positive discounted cost to allocate against.']};
   const tax=allocate(Math.round(order.tax*100),net);
-  const shipping=allocate(Math.round(order.shipping*100),order.items.map(i=>i.qty));
+  const method=order.shippingAllocation ?? 'quantity'; // Preserve older saved examples.
+  if(!['line_total','quantity'].includes(method)) return {errors:['Choose a shipping allocation method.']};
+  const weights=method==='quantity' ? order.items.map(i=>i.qty) : merch.map((n,i)=>base[i]>0 ? n*net[i]/base[i] : 0);
+  if(order.shipping>0 && !weights.some(n=>n>0)) return {errors:['Shipping needs positive discounted merchandise value. Choose By quantity or correct the amounts.']};
+  const shipping=allocate(Math.round(order.shipping*100),weights);
   const totals=net.map((n,i)=>n+tax[i]+shipping[i]);
   return {errors:[],merch,fees,other,discount,tax,shipping,totals,total:totals.reduce((a,b)=>a+b,0)};
 }
@@ -171,6 +175,7 @@ $('example').addEventListener('change',event=>{
 });
 try {const stored=JSON.parse(localStorage.getItem(key));if(stored){({data,draft,screen}=stored);if(!data.order||!draft.items)throw new Error('Invalid saved demo');}} catch {data=null;}
 if(!data){data=sample();draft=clone(data.order);screen='create';}
+for(const order of [data.order,draft]) order.shippingAllocation ??= 'quantity';
 // Upgrade locally saved examples from the previous price-selector form.
 for(const order of [data.order,draft]) for(const item of order.items) {
   if(!Object.prototype.hasOwnProperty.call(item,'unitPrice'))reconcileItem(item);

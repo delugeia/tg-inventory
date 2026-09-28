@@ -30,3 +30,11 @@ Maintain this single working list of deferred possibilities. Inclusion does not 
 - Added: 2026-09-28; **user-directed discussion deferral**, not a release-scope exclusion (D-117).
 - For now, ignore inactive/archived Items’ effects on searches and other usage while reviewing Catalog creation/management.
 - Revisit Q-017 and related catalog questions before specifying downstream visibility, references, and parent/child lifecycle rules. The local mockup does not establish cascading behavior.
+
+## FI-004 — Shipping fit and weight assistance
+
+- Added: 2026-09-28 during D-121's authorized data review.
+- State: **Agent Idea — unaccepted; not a user-directed discussion or release deferral.**
+- The shipping workbook contains size/use notes and a three-box weight experiment. A future optional helper might suggest a container or estimate packed weight after the dimensions, measurement basis and unit conversions are reviewed.
+- Keep simple recorded shipping details in Q-045 separate from this automation idea. The current formula is applied to flat/padded mailers as well as boxes, exterior dimensions have discrepancies, and supplier unit/bundle weights differ. Do not use it to enforce fit, calculate postage or consume inventory without a separately approved workflow.
+- No carrier integration, vendor crawling, automated purchasing or recurring price research is approved.

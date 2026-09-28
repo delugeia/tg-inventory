@@ -45,7 +45,7 @@ Thoughts retained in the single registers: request-index text search is [FI-002]
 - [Current status](../status/Current%20Status.md): current stage and next steps.
 - [Open Questions](../status/Open%20Questions.md): Evening drafts await review; Q-042 covers purchase backwards-state details and Q-012 covers relocation fulfillment. Q-041 retains remaining item questions and Q-040 retains index details. The index and item view are lightly linked but retain separate sample data (D-102).
 - [Rough Notes Review — cost arithmetic](../_specifications/Rough%20Notes%20Review.md#cost-arithmetic-needs-explicit-definitions): costing requirements and examples.
-- [Decisions](../status/Decisions.md): D-040/D-041 cover receipt averaging; D-042 covers tax/shipping allocation; D-043 covers flexible price entry and bonus units. The purchase mockup also demonstrates receipt averaging against illustrative existing stock and unknown catalog cost.
+- [Decisions](../status/Decisions.md): D-040/D-041 cover receipt averaging; D-042 and D-123 cover tax/shipping allocation, including the saved shipping method and line-total default; D-043 covers flexible price entry and bonus units. The purchase mockup also demonstrates receipt averaging against illustrative existing stock and unknown catalog cost.
 
 ## Organization
 

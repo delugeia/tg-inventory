@@ -104,7 +104,7 @@ Reference: [Relocation Requests](../_specifications/Relocation%20Requests.md), D
 
 ### Prepare prices and an order
 
-- Procurement selects the merchant, destination, items, quantities, dates, and charges. Explain the Unit/Cost relationship, line fees, Other Fees, discount, tax, shipping, and final total using a worked invoice.
+- Procurement selects the merchant, destination, items, quantities, dates, and charges. Explain the Unit/Cost relationship, line fees, Other Fees, discount, tax, shipping, and final total using a worked invoice. Shipping allocation defaults to By line total (discounted merchandise, excluding fees); Procurement may choose By quantity for that purchase.
 - Use the detailed pricing reference for charge allocation and retained precision. Values recalculate when leaving a field; a shortened displayed Unit value does not replace its underlying precision.
 - Marking Ordered creates pending quantities only. Shipped is optional and does not add stock or recalculate cost.
 - **Potential hang-up:** optional request fields do not imply that an order or receipt can be finalized without usable item/quantity/cost details. Current order validation includes Agent Suggestions awaiting review.

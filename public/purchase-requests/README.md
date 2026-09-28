@@ -45,3 +45,6 @@ Keep shared components and theme values in `../css/style.css`. Update `../css/st
 ## Worksheet and request-table refinement — D-114
 
 The index columns are Last Updated, Title, Owner, Status, Request ID. Only the updated date appears; the ID has its own final column, not a second line under Title.
+
+
+D-123 (2026-09-28): Shipping allocation is saved per purchase: By line total (new-purchase default, discounted merchandise excluding fees) or By quantity. Tax remains based on discounted cost including fees. See the purchase costing specification for discount-component and zero-value handling. Existing local samples without a saved choice retain quantity allocation; finalized receipts remain read-only.

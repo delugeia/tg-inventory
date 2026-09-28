@@ -8,17 +8,36 @@ Keep this file open in Typora. This section is the live discussion queue; the fu
 
 Inventory Behavior and the main purchase rules are settled for this requirements pass. The purchase mockup interactions were accepted; the assembled specifications remain Draft or Ready for review, without complete specification approval. See the [purchase handoff](../handoff/2026-09-25-191253Z-handoff.md) for completed work.
 
-### Next topic — Review Catalog and existing workflow drafts
+### Next topic — Open: user to choose
 
-The requested drafts and subsequent Catalog/refinement work are complete (D-103–D-117). Continue with the user’s chosen review topic; preserve previous item/index/cost decisions and label unsettled choices Agent Suggestions. Public hosting and the introduction are complete (D-118/D-119); no further autonomous feature work or application implementation is authorized. The [mockup index](../public/README.md) links the drafts and completed grading assessment (D-108). FI-002 retains optional request-index text search for consideration; it is not an accepted requirement.
+**Current planning question:** what would you like to work on next? The user explicitly leaves the next direction undecided at handoff. Wait for their instruction; the queue below is optional background, not an assigned next task.
+
+#### Available topic — Legacy data and import review
+
+The user authorized a three-workbook audit and draft import package (D-121). The [Data Import and Legacy Data Review](../_specifications/Data%20Import%20and%20Legacy%20Data%20Review.md) records findings and **Agent Suggestions**; the [local CSV README](../_data/data-for-import/README.md) explains the package. That audit did not change workflow policy; the later D-123 shipping decision separately updated both purchase mockups.
+
+**Optional review question — Q-043:** how should the repeated Indianapolis Gaming Safe Space rows be resolved, and which counts should establish the eventual production starting inventory? The first rows are blank but later rows contain 1 kit, 86 buttons and 85 pins. The draft preserves all observations and excludes those ambiguous pairs. Its 326 opening candidates are historical test data, not confirmed current counts.
+
+Short queue for return (Agent Suggestion):
+
+Resolved pricing clarification: **D-122** confirms per-individual-item purchase prices ($0.92 for mailers quoted at $92 per hundred). The person entering the purchase converts the amount; no mockup/process change or pricing-unit controls are needed. Other import questions remain open.
+
+1. Q-043 / Q-018: choose the stock baseline, resolve duplicate rows, and map shipping buckets/game stock to actual storage locations.
+2. Q-044 / Q-019: choose opening Unit Cost policy; retain historical orders without replaying stock. Source game MSRP and its described IRS/insurance use are already understood (D-121).
+3. Q-015 / Q-016 / Q-021: approve catalog groups/SKUs and aliases, then decide which historical records and pack/listing metadata to import.
+4. Q-045 / Q-046: review optional shipping attributes/consumption and donated-game metadata. Return to Catalog and the prior workflow queue afterward.
+
+### Prior queue — Catalog and existing workflow drafts
+
+The requested drafts and subsequent Catalog/refinement work are complete (D-103–D-117). Preserve previous item/index/cost decisions and label unsettled choices Agent Suggestions. Public hosting and the introduction are complete (D-118/D-119). D-121 authorizes the data review above; application implementation remains unauthorized. The [mockup index](../public/README.md) links the drafts and completed grading assessment (D-108). FI-002 retains optional request-index text search for consideration; it is not an accepted requirement.
 
 The shared style pass is complete (D-109); the [style guide](../public/css/style-guide.html) remains a provisional starting point for later design. This does not settle the workflow questions below.
 
-Current review: the [Catalog draft](../public/catalog/index.html) now covers Category/Collection management and Item creation (D-117). Validation and restore choices remain Agent Suggestions. Lifecycle effects on searches/other usage are explicitly postponed (FI-003); no answer is required to try the draft.
+Prior review: the [Catalog draft](../public/catalog/index.html) covers Category/Collection management and Item creation (D-117). Validation and restore choices remain Agent Suggestions. Lifecycle effects on searches/other usage are explicitly postponed (FI-003); no answer is required to try the draft.
 
 Next workflow question for later review: how should permanent relocation receipt discrepancies and unfulfilled requested quantities be closed? D-115 settles stage permissions, Requested edits, split arrivals and draft receiving counts; Q-012 retains the remaining exception policy. The mockup still requires received = sent before Complete.
 
-Upcoming queue (Agent Suggestion; user chooses the order):
+Parked workflow sequence (Agent Suggestion; current import-review queue is above):
 
 1. Review Catalog and the existing workflow drafts, including their labeled assumptions.
 2. Q-012: permanent receipt discrepancies, additional outbound shipments and unfulfilled remainder; authority and Requested editing are settled in D-115.
@@ -114,11 +133,24 @@ Event reconciliation follow-up questions:
 | ID | Question | Why it matters |
 | --- | --- | --- |
 | Q-020 | Which workflows are mandatory in the first release, and what should later phases contain? | Exhaustive coverage does not establish delivery order. |
-| Q-021 | What existing records need importing, with what quantities, cost history, and quality checks? | Establishes initial data and launch reconciliation. |
+| Q-021 | D-121 authorizes the source audit and draft CSVs; mappings/posting rules are not approved. Which of the 193 item candidates, historical purchase references, supplier-only products and external listing metadata should enter production? Approve the selected catalog/location mappings and migration operation after Q-043–Q-046 and existing Q-015/Q-016/Q-018/Q-019. | The [import review](../_specifications/Data%20Import%20and%20Legacy%20Data%20Review.md) and local CSV README preserve all source evidence and separate 326 historical opening candidates from non-posting references. No application import has occurred. |
 | Q-022 | Partially resolved — a final event distribution summary with print and CSV download is required (D-023). Still open: other reports/exports, notifications, attachments, and whether Shopify/Microsoft require integrations beyond links/sign-in. | Avoids inferring additional integrations or report scope. |
 | Q-023 | What hosting resources, supported software versions, Microsoft administration access, deployment process, backup/restore needs, and retention requirements apply? | Supplies evidence for later technical specifications. |
-| Q-024 | Partially resolved — approximately 225 catalog items: 160 tracked items, 30 shipping container types, and 35 Gayme Night games (D-084). The inventory index uses one scrollable table without pagination (D-085). D-086 sets desktop/laptop priority across the entire application; phone/tablet use must remain possible but may be clunky. Still open: users, locations, transaction volumes, specific device/browser targets, accessibility, event connectivity, remaining table/print details, and performance targets. | Turns usability preferences into verifiable requirements. |
+| Q-024 | Partially resolved — D-084's rough estimate was approximately 225 catalog items. The D-121 source audit finds 193 distinct candidates in the supplied files (136 main, 31 shipping, 26 games); completeness/current stock remains unconfirmed. The inventory index uses one scrollable table without pagination (D-085). D-086 sets desktop/laptop priority with usable phone/tablet access. Still open: users, locations, transaction volumes, device/browser targets, accessibility, connectivity, remaining table/print details and performance targets. | Actual source counts refine scale without changing the existing index decision. |
 | Q-035 | Partially resolved — saved corrections update the report without reopening or changing inventory (D-028). Still open: exact report columns and whether historical report versions are needed. | D-023 requires print and CSV without movement details. Agent Suggestion: event identification, item name, SKU, and distributed quantity. |
+
+## Legacy data migration follow-ups
+
+These are questions for review, not new requirements. Data-quality issues and exact rows are in the local import package; this remains the single product-question register.
+
+| ID | Question | Evidence and draft treatment |
+| --- | --- | --- |
+| Q-043 | Which dated or newly counted quantities establish production opening stock? Resolve repeated DN_SQTR/Gaming Safe Space rows and confirm whether later Indianapolis counts replace earlier blanks. Where are game quantities held, and what do shipping columns H/I/J represent? | Summary counts differ from physical-sheet numeric rows by 172 units; the displayed summary also duplicates two units. Shipping H has negative values and is excluded from source Total; I is blank. Locations/dates remain unresolved for shipping and games. Keep Q-018's location-field policy separate; no stale-count workflow is proposed. |
+| Q-044 | What Unit Cost should be used at cutover where the source has no cost or only the last purchase rate? Should incomplete purchase records remain reference-only as proposed, and how should ambiguous order dates/references or vendor aliases be resolved? | 82 summary rows default cost to zero without a purchase; one purchase lacks quantity/cost. Main ledger ends May 2024. Replay would double-count opening stock. Direct cost-edit/import authority remains postponed, not assigned by this review. |
+| Q-045 | Which shipping attributes belong in the application: supplier/model, internal/external dimensions, variable depth, measured versus estimated weight and purchase pack size? When should consumable/reused shipping supplies reduce stock? | The sheets contain all of these plus ambiguous Stock/OR labels, five zero-height mailers, formula estimates and per-100 prices. Suggest optional shipping details, not required fields for every Item. No automatic consumption or shipping calculator is approved. |
+| Q-046 | Beyond retaining the user's stated game MSRP/IRS/insurance basis, should the application store donor/manufacturer associations and dated MSRP changes? Is a separate donation receipt workflow needed, and what source can establish actual gift dates/quantities/locations? | Updated is a count/record date, not a gift receipt date. The draft retains organization aliases and MSRP; game Unit Cost/asks remain blank and no receipt is fabricated. This question does not reopen the user's described valuation practice. |
+
+Related existing questions: **Q-015** now has concrete duplicate-SKU, underscore-prefix and 57 missing-SKU cases; **Q-016** has Shopify single-item packs and repeated mixed-kit identifiers; **Q-019** has valuation-basis and default-zero evidence; **Q-022** still covers any future channel integration. None is settled by the draft's staging mappings.
 
 ## Location inventory and ledger follow-up
 
