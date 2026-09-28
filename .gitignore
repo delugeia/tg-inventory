@@ -1,6 +1,7 @@
 # Local-only project content (never commit or force-add)
 /_private/
 /_secrets/
+/_data/
 
 # Environment files and credentials
 .env

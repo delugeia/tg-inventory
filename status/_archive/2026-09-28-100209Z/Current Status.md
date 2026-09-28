@@ -1,8 +1,6 @@
 # Current status
 
-Last updated: 2026-09-28 UTC — `_data/` made local-only.
-
-The user requested ignoring root `_data/` and removing its tracked files from the current GitHub tree while retaining prior history; existing local files are preserved. `.gitignore`, README and agent guidance now record this convention. Sample-source links require a local copy. This chat's pre-update status snapshot is `status/_archive/2026-09-28-100209Z/`.
+Last updated: 2026-09-28 UTC — planning handoff prepared.
 
 ## Stage and next activity
 

@@ -22,7 +22,7 @@ A [presentation outline](docs/Presentation%20Outline.md) introduces the project 
 
 Open the [interactive mockup walkthrough](public/index.html) for a brief introduction and sidebar navigation through all nine examples in presentation order. The TG Inventory brand returns to the introduction.
 
-Use the [approved sample names](_data/sample-names.md) for sample people, storage locations, and events throughout future project work.
+Use the [approved sample names](_data/sample-names.md) for sample people, storage locations, and events throughout future project work. The root `_data/` directory is local-only and ignored by Git; its links require a local copy. It has been removed from the current repository tree, with prior Git history retained at the user's direction.
 
 ## Start here
 

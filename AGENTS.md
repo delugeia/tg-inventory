@@ -30,6 +30,8 @@ For a task transition, read the handoff linked from current status, or a specifi
 
 ## Working rules
 
+- The root `_data/` directory is local-only and ignored by Git. Preserve existing local files and never force-add it. References to its sample-name source require a local copy; prior Git history is retained by user direction.
+
 - This project is maintained in the public GitHub repository [delugeia/tg-inventory](https://github.com/delugeia/tg-inventory), with this folder as the Git root, `origin` as the remote, and `main` as the shared branch. Keep project documentation consistent with its ongoing public availability.
 - Keep any future secrets or PII only in the root `_secrets/` folder. Both `_secrets/` and `_private/` are ignored by Git. Never force-add them or copy their contents into tracked files, logs, screenshots, or documentation. Preserve these exclusions in future `.gitignore` edits.
 
