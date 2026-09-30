@@ -970,16 +970,6 @@ Draft implementation detail: because order discounts already apply to merchandis
 
 The choice follows existing order-edit/receipt permissions and becomes read-only on finalization. Existing browser samples lacking a choice retain quantity allocation so their saved receipt costs do not change. This is mockup compatibility, not approval of a production migration policy.
 
-### D-124 — Use the supplied Microsoft authentication design in the roadmap
-
-Date: 2026-09-30. Origin: User direction and supplied selected-architecture document.
-
-- Use [TG Laravel Microsoft Authentication Specification](../_specifications/tg-laravel-microsoft-authentication.md) for the roadmap's sign-on overview and task lists, linking its relevant sections instead of doing additional authentication research.
-- That source selects Laravel Socialite with `socialiteproviders/microsoft`, TG single-tenant member/eligible-guest access, session-based code flow with PKCE/state checks, and provider/tenant/object identity rather than email linking. Carry its selected requirements forward without reopening library selection.
-- Preserve its open eligibility/provisioning, session/revocation, environment-registration, logout, contact-email, and production-credential choices. Q-009 and Q-023 retain those outstanding decisions; broader permission authority remains Q-010/Q-011.
-- The user reports completing a separate evaluation. The supplied document expressly limits its own verification to documentation/released source, so it is not runtime acceptance evidence for this inventory application.
-- This instruction authorizes roadmap documentation, not implementation, deployment, or approval of the roadmap's proposed release scope. It does not relabel the supplied document's state or approve its unresolved choices.
-
 ## Proposals under discussion
 
 

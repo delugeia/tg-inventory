@@ -20,6 +20,10 @@ The [item-view mockup](public/item-view/index.html) includes [Edit Inventory](pu
 
 A rough [User’s Guide outline](docs/Users%20Guide.md) covers major workflows, common hang-ups, and references for later expansion. It describes planned behavior and distinguishes unresolved policies from mockup conveniences.
 
+For a standalone introduction to planned functionality, read the Draft [revised feature overview](docs/features-revised.md). The [original feature overview](docs/features.md) is preserved for comparison. Both cover agreed behavior, pending decisions, unexplored areas, and optional proposals for volunteer readers, without requiring other documents.
+
+The Draft [Development Roadmap](_specifications/Development%20Roadmap.md) proposes 12 phases from setup through the first production release, each with task and validation checklists. Its sign-on phase follows the supplied [TG Microsoft authentication specification](_specifications/tg-laravel-microsoft-authentication.md). The roadmap is for review and does not authorize implementation or replace the existing planning repository/site with the proposed application environments.
+
 A [presentation outline](docs/Presentation%20Outline.md) introduces the project and walks through all nine mockups, with slide talking points, demo steps, and presenter notes.
 
 Open the [interactive mockup walkthrough](public/index.html) for a brief introduction and sidebar navigation through all nine examples in presentation order. The TG Inventory brand returns to the introduction.

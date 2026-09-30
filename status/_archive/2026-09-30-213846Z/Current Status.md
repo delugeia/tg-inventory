@@ -1,22 +1,12 @@
 # Current status
 
-Last updated: 2026-09-30 UTC — development roadmap and supplied authentication design incorporated.
+Last updated: 2026-09-28 UTC — shipping allocation choice confirmed and mockups updated (D-123).
 
 The user requested ignoring root `_data/` and removing its tracked files from the current GitHub tree while retaining prior history; existing local files are preserved. `.gitignore`, README and agent guidance now record this convention. Sample-source links require a local copy. This chat's pre-update status snapshot is `status/_archive/2026-09-28-100209Z/`.
 
 ## Stage and next activity
 
-Requirements planning. The requested feature overviews and development roadmap are complete for review. Wait for the user's next planning instruction; do not execute the roadmap or resume import processing automatically. All nine mockups remain Drafts, and individual decisions do not approve assembled specifications.
-
-## Development roadmap and authentication source
-
-Created the Draft [Development Roadmap](../_specifications/Development%20Roadmap.md): 12 phases from scope/setup through sign-in, a complete stock-correction slice, daily inventory, request intake, movement/costing, events, import rehearsal, operating readiness, volunteer acceptance, and production release. Each phase includes prerequisites, resources, tasks, observable validation, completion criteria, and notes. One execution review revised schema dependencies, administration coverage, event-test sequencing, recovery staging, and placeholder completion. All execution checkboxes remain unchecked; no application or infrastructure changes were made.
-
-D-124 records the user's supplied [Microsoft authentication specification](../_specifications/tg-laravel-microsoft-authentication.md) as the sign-on source; its architecture is selected, while its listed policy/credential choices remain open. No additional authentication research was used. Separate environment documentation checks found Windows Herd's published MariaDB matrix lists 10.11 and Forge's provisioning list 10.11/11.4, leaving the requested 11.8 provisioning method in Q-023. The roadmap retains 11.8, distinguishes the proposed `tabletopgaymers/inventory` application repository/development domains from the existing public planning repository/site, and treats first-release scope as proposed. The existing source document was preserved unchanged. This chat's pre-update snapshot remains `status/_archive/2026-09-30-213846Z/`.
-
-## Standalone feature overviews
-
-Created [features.md](../docs/features.md) and a separately revised [features-revised.md](../docs/features-revised.md) for moderately tech-savvy volunteer readers. Both are Draft, self-contained, use neutral collective language, and contain no external/document links or references to planning tools. They distinguish defined behavior, pending decisions, unexplored areas, proposals, and discussion versus release deferrals. The original received a B+ editorial assessment; the revision uses task-first organization, workflow tables, clearer pending-decision labels, and separate history/usability coverage. No product decisions, specification approvals, mockups, or application code changed. Next activity is user review or another planning instruction. This chat's pre-update snapshot is `status/_archive/2026-09-30-213846Z/`.
+Requirements planning. **Next direction is open:** the user has not chosen the next task. Read the handoff, then wait for their planning instruction; do not automatically resume the import review or start application development. All nine mockups remain Drafts, and individual decisions do not approve assembled specifications.
 
 ## Purchase shipping allocation
 
@@ -35,7 +25,7 @@ D-123 confirms a per-purchase shipping selector: default By line total, using di
 - All recommendations remain **Agent Suggestions/Ideas**. Final mappings, counts, cost policy, import authority and any application changes await the user. Usage checkpoints: 81% start, 80% after initial audit, 79% during extraction, **78% at completion**; floor 20%. No need to spend the available allowance once the scoped deliverables are complete.
 - Handoff requested: documentation and directions are prepared; commit/push is the final packaging step, with synchronization reported in the closing response. This chat already snapshotted status once at `status/_archive/2026-09-28-100209Z/` before its first status change.
 
-[Current handoff](../handoff/2026-09-28-225139Z-handoff.md) · [Mockup index](../public/README.md) · [Style guide](../public/css/style-guide.html) · [Decisions](Decisions.md) through D-124 · [Open Questions](Open%20Questions.md) · [Future Ideas](Future%20Ideas.md).
+[Current handoff](../handoff/2026-09-28-225139Z-handoff.md) · [Mockup index](../public/README.md) · [Style guide](../public/css/style-guide.html) · [Decisions](Decisions.md) through D-123 · [Open Questions](Open%20Questions.md) · [Future Ideas](Future%20Ideas.md).
 
 ## Completed stages
 

@@ -1,6 +1,6 @@
 # Open questions
 
-Single working question register, updated 2026-09-30 UTC. Entries are open unless explicitly marked resolved or partially resolved. Review findings are documented in [Rough Notes Review](../_specifications/Rough%20Notes%20Review.md). Questions identify undecided behavior; they do not introduce approved requirements.
+Single working question register, updated 2026-09-28 UTC. Entries are open unless explicitly marked resolved or partially resolved. Review findings are documented in [Rough Notes Review](../_specifications/Rough%20Notes%20Review.md). Questions identify undecided behavior; they do not introduce approved requirements.
 
 ## Next questions
 
@@ -10,15 +10,7 @@ Inventory Behavior and the main purchase rules are settled for this requirements
 
 ### Next topic — Open: user to choose
 
-**Current planning question:** review the proposed scope and sequence in the completed [Development Roadmap](../_specifications/Development%20Roadmap.md), or choose another planning topic. The roadmap is not permission to execute it. The [revised feature overview](../docs/features-revised.md) remains available. D-124 adopts the supplied selected authentication design as the roadmap source while preserving its remaining policy decisions. Wait for the next instruction.
-
-Short optional roadmap review queue:
-
-1. Q-020: approve or revise the proposed first-release baseline and phase sequence.
-2. Q-023: confirm the separate application repository/development environments and how MariaDB 11.8 will be provisioned; published Herd/Forge menus do not establish availability of that version.
-3. Q-009/Q-023: settle the authentication source's remaining eligibility/provisioning, session/logout, registration and credential choices before their dependent phases. Q-010/Q-011 remain postponed until the user chooses to address broader permissions.
-
-The prior import and workflow topics below remain optional background rather than assigned work.
+**Current planning question:** what would you like to work on next? The user explicitly leaves the next direction undecided at handoff. Wait for their instruction; the queue below is optional background, not an assigned next task.
 
 #### Available topic — Legacy data and import review
 
@@ -100,7 +92,7 @@ Q-001 timing is now confirmed in D-036. P-001's remaining date/lifecycle details
 
 | ID | Question | Why it matters |
 | --- | --- | --- |
-| Q-009 | Partially resolved — D-124 adopts the supplied TG single-tenant Microsoft architecture for members and registered eligible guests; arbitrary external accounts and email-based identity linking are excluded. Still open: which members/guests are eligible, provisioning policy, first admin, offboarding/local disablement, session lifetime/revocation, logout behavior, and any contact-email requirement. | Follow the [authentication specification](../_specifications/tg-laravel-microsoft-authentication.md), especially Sections 4.6, 5.5–5.6 and 6. Tenant membership alone is not application authorization; removing Entra assignment does not itself end an existing application session. |
+| Q-009 | May every organizational Microsoft account sign in, or only current officers? How are departed officers disabled and the first admin appointed? | The notes alternate between officers and anyone with the domain. |
 | Q-010 | Partially resolved — D-104 grants Managers inventory access to any Storage Location, superseding assignment-only access assumptions. Who can assign/remove roles, promote/demote users, or disable accounts? | User explicitly leaves the permission-assignment role undecided. Candidate permission controls are disabled mockup suggestions. |
 | Q-011 | Partially resolved — multiple managers may edit events (D-012); any manager may make reporting-only corrections to any finalized event, without reopening or admin approval (D-028). Still open: who may directly edit Unit Cost (explicitly postponed by D-097), initial finalization permissions, permission-assignment boundaries, and remaining role details. D-104 now grants Officer viewing access and any-manager storage inventory updates. | Finalized-event correction permission is settled; it does not imply unrestricted permissions for unrelated operations. |
 
@@ -143,7 +135,7 @@ Event reconciliation follow-up questions:
 | Q-020 | Which workflows are mandatory in the first release, and what should later phases contain? | Exhaustive coverage does not establish delivery order. |
 | Q-021 | D-121 authorizes the source audit and draft CSVs; mappings/posting rules are not approved. Which of the 193 item candidates, historical purchase references, supplier-only products and external listing metadata should enter production? Approve the selected catalog/location mappings and migration operation after Q-043–Q-046 and existing Q-015/Q-016/Q-018/Q-019. | The [import review](../_specifications/Data%20Import%20and%20Legacy%20Data%20Review.md) and local CSV README preserve all source evidence and separate 326 historical opening candidates from non-posting references. No application import has occurred. |
 | Q-022 | Partially resolved — a final event distribution summary with print and CSV download is required (D-023). Still open: other reports/exports, notifications, attachments, and whether Shopify/Microsoft require integrations beyond links/sign-in. | Avoids inferring additional integrations or report scope. |
-| Q-023 | Partially defined — the requested roadmap targets Laravel 13.x/PHP 8.5/MariaDB 11.8, Herd locally, Forge public development, `dev-inventory.test`, `dev-inventory.tabletopgaymers.org`, and proposed application repo `tabletopgaymers/inventory`. Confirm ownership/access, repository separation, actual provisioning, production hostname, Entra environment-registration arrangement, credential strategy/rotation, deployment/recovery, retention and support responsibilities. | D-124's [authentication source](../_specifications/tg-laravel-microsoft-authentication.md) provides documented dependency compatibility, not installation evidence. September 30 official Windows Herd matrix lists MariaDB 10.11; Forge lists 10.11/11.4. The [roadmap](../_specifications/Development%20Roadmap.md) retains 11.8 pending an explicit provisioning choice. Existing planning repo/static site remain separate; no migration or version substitution is approved. |
+| Q-023 | What hosting resources, supported software versions, Microsoft administration access, deployment process, backup/restore needs, and retention requirements apply? | Supplies evidence for later technical specifications. |
 | Q-024 | Partially resolved — D-084's rough estimate was approximately 225 catalog items. The D-121 source audit finds 193 distinct candidates in the supplied files (136 main, 31 shipping, 26 games); completeness/current stock remains unconfirmed. The inventory index uses one scrollable table without pagination (D-085). D-086 sets desktop/laptop priority with usable phone/tablet access. Still open: users, locations, transaction volumes, device/browser targets, accessibility, connectivity, remaining table/print details and performance targets. | Actual source counts refine scale without changing the existing index decision. |
 | Q-035 | Partially resolved — saved corrections update the report without reopening or changing inventory (D-028). Still open: exact report columns and whether historical report versions are needed. | D-023 requires print and CSV without movement details. Agent Suggestion: event identification, item name, SKU, and distributed quantity. |
 
